@@ -12,107 +12,141 @@ namespace SchoolManagementApplicationDAL.Repository
 {
     public class EducatorDetailsRepo: IEducatorDetails
     {
-        SqlConnection conObj = new SqlConnection("Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;");
-        public List<EducatorDetailsADO> getAllEducatorDetails()
+        //SqlConnection conObj = new SqlConnection("Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;");
+
+        private readonly string _connString = "Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;";
+        public List<EducatorDetails> fetchEducatorDetails(int educatorid)
         {
-            List<EducatorDetailsADO> lstEduDetails = new List<EducatorDetailsADO>();
+            List<EducatorDetails> lstEduDetails = new List<EducatorDetails>();
 
-            SqlCommand cmd = new SqlCommand("getEducatorDetails", conObj);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
+            using (var con = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand("fetchEducatorDetails", con))
             {
-                EducatorDetailsADO eduDet = new EducatorDetailsADO();
-                eduDet.educator_registration_Id = Convert.ToInt32(dr["RegistrationId"]);
-                eduDet.educator_name = dr["educatorName"].ToString();
-                eduDet.educator_department = dr["educatorDepartment"].ToString();
-                eduDet.class_assigned = dr["classAssigned"].ToString();
-                eduDet.section_assigned = Convert.ToChar(dr["sectionAssigned"]);
-                eduDet.subject_assigned = (dr["subjectAssigned"]).ToString();
-                eduDet.address = dr["educatorAddress"].ToString();
-                eduDet.mobile_number = dr["mobileNumber"].ToString();
-                
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@educatorid", SqlDbType.Int) { Value = educatorid });
 
-                lstEduDetails.Add(eduDet);
+                var da = new SqlDataAdapter(cmd);
+                var ds = new DataSet();
+
+                da.Fill(ds);
+
+                DataTable dt = new DataTable();
+                dt = ds.Tables[0];
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    EducatorDetails eduDet = new EducatorDetails();
+                    eduDet.EducatorId = Convert.ToInt32(dr["EducatorId"]);
+                    eduDet.EducatorFirstName = dr["EducatorFirstName"].ToString();
+                    eduDet.EducatorMiddleName = dr["EducatorMiddleName"].ToString();
+                    eduDet.EducatorLastName = dr["EducatorLastName"].ToString();
+                    eduDet.EducatorFullName = dr["EducatorFullName"].ToString();
+
+                    eduDet.EducatorDepartmentName = dr["DepartmentName"].ToString();
+                    eduDet.EducatorClassesAssigned = dr["ClassesAssigned"].ToString();
+                    eduDet.EducatorPhoneNumber = dr["EducatorPhoneNumber"].ToString();
+                    eduDet.EducatorAddressLine1 = dr["EducatorAddressLine1"].ToString();
+                    eduDet.EducatorAddressLine2 = dr["EducatorAddressLine2"].ToString();
+                    eduDet.EducatorFullAddress = dr["EducatorFullAddress"].ToString();
+                    eduDet.EducatorCity = dr["City"].ToString();
+                    eduDet.EducatorState = dr["HomeState"].ToString();
+                    eduDet.EducatorCountry = dr["Country"].ToString();
+                    eduDet.ZipCode = dr["ZipCode"].ToString();
+                    eduDet.EmailId = dr["EmailId"].ToString();
+
+
+
+                    lstEduDetails.Add(eduDet);
+
+
+                }
+
+                return lstEduDetails;
 
 
             }
-
-            return lstEduDetails;
-
-
         }
 
-        public List<EducatorDetailsForDropdownADO> getEducatorDetailsForDropDown()
+        public List<EducatorDetailsForDropDown> getEducatorDetailsForDropDown(int educatorId)
         {
-            List<EducatorDetailsForDropdownADO> lstEduDrpDwn = new List<EducatorDetailsForDropdownADO>();
-            SqlCommand cmd = new SqlCommand("getEducatorDetails", conObj);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            List<EducatorDetailsForDropDown> lstEduDrpDwn = new List<EducatorDetailsForDropDown>();
 
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
+            using (var con = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand("fetchEducatorDetails", con))
             {
-                EducatorDetailsForDropdownADO educatorDetailsByDropDown = new EducatorDetailsForDropdownADO();
-                educatorDetailsByDropDown.educator_registration_Id = Convert.ToInt32(dr["RegistrationId"]);
-                educatorDetailsByDropDown.educator_name = dr["educatorName"].ToString();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@educatorId", SqlDbType.Int) { Value = educatorId });
+
+                var da = new SqlDataAdapter(cmd);
+
+                var ds = new DataSet();
+
+                da.Fill(ds);
+
+                DataTable dt = new DataTable();
+
+                dt = ds.Tables[1];
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    EducatorDetailsForDropDown educatorDetailsByDropDown = new EducatorDetailsForDropDown();
+                    educatorDetailsByDropDown.EducatorIdForDrpDwn = Convert.ToInt32(dr["EducatorId"]);
+                    educatorDetailsByDropDown.EducatorFullNameForDrpDwn = dr["EducatorFullName"].ToString();
 
 
-                lstEduDrpDwn.Add(educatorDetailsByDropDown);
+                    lstEduDrpDwn.Add(educatorDetailsByDropDown);
+                }
+                return lstEduDrpDwn;
             }
-            return lstEduDrpDwn;
         }
 
-        public List<EducatorDetailsADO> getEducatorDetailsByRegistrationId(int registrationId)
+        public List<EducatorDetails> getEducatorDetailsByRegistrationId(int educatorId)
         {
-            List<EducatorDetailsADO> lstEduDetailsbyRegId = new List<EducatorDetailsADO>();
+            List<EducatorDetails> lstEduDetailsbyRegId = new List<EducatorDetails>();
 
-            SqlCommand cmd = new SqlCommand("getEducatorDetailsByRegId", conObj);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            SqlParameter param1 = new SqlParameter
+            using (var con = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand("fetchEducatorDetails", con))
             {
-                ParameterName = "@registrationId", //Parameter name defined in stored procedure
-                SqlDbType = SqlDbType.Int, //Data Type of Parameter
-                Value = registrationId, //Value passes to the paramtere
-                Direction = ParameterDirection.Input //Specify the parameter as input
-            };
-            //Add the parameter to the Parameters property of SqlCommand object
-            cmd.Parameters.Add(param1);
-            conObj.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@educatorId", SqlDbType.Int) { Value = educatorId });
 
-            cmd.ExecuteNonQuery();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                var da = new SqlDataAdapter(cmd);
 
-            DataTable dt = new DataTable();
+                var ds = new DataSet();
 
-            da.Fill(dt);
+                da.Fill(ds);
 
-            foreach (DataRow dr in dt.Rows)
-            {
-                EducatorDetailsADO EduDetails = new EducatorDetailsADO();
-                EduDetails.educator_registration_Id = Convert.ToInt32(dr["RegistrationId"]);
-                EduDetails.educator_name = dr["educatorName"].ToString();
-                EduDetails.educator_department = dr["educatorDepartment"].ToString();
-                EduDetails.class_assigned = dr["classAssigned"].ToString();
-                EduDetails.section_assigned = Convert.ToChar(dr["sectionAssigned"]);
-                EduDetails.subject_assigned = (dr["subjectAssigned"]).ToString();
-                EduDetails.address = dr["educatorAddress"].ToString();
-                EduDetails.mobile_number = dr["mobileNumber"].ToString();
-                lstEduDetailsbyRegId.Add(EduDetails);
+                DataTable dt = new DataTable();
+                dt = ds.Tables[0];
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    EducatorDetails eduDet = new EducatorDetails();
+                    eduDet.EducatorId = Convert.ToInt32(dr["EducatorId"]);
+                    eduDet.EducatorFirstName = dr["EducatorFirstName"].ToString();
+                    eduDet.EducatorMiddleName = dr["EducatorMiddleName"].ToString();
+                    eduDet.EducatorLastName = dr["EducatorLastName"].ToString();
+                    eduDet.EducatorFullName = dr["EducatorFullName"].ToString();
+
+                    eduDet.EducatorDepartmentName = dr["DepartmentName"].ToString();
+                    eduDet.EducatorClassesAssigned = dr["ClassesAssigned"].ToString();
+                    eduDet.EducatorPhoneNumber = dr["EducatorPhoneNumber"].ToString();
+                    eduDet.EducatorAddressLine1 = dr["EducatorAddressLine1"].ToString();
+                    eduDet.EducatorAddressLine2 = dr["EducatorAddressLine2"].ToString();
+                    eduDet.EducatorFullAddress = dr["EducatorFullAddress"].ToString();
+                    eduDet.EducatorCity = dr["City"].ToString();
+                    eduDet.EducatorState = dr["HomeState"].ToString();
+                    eduDet.EducatorCountry = dr["Country"].ToString();
+                    eduDet.ZipCode = dr["ZipCode"].ToString();
+                    eduDet.EmailId = dr["EmailId"].ToString();
+
+                    lstEduDetailsbyRegId.Add(eduDet);
 
 
+                }
+
+                return lstEduDetailsbyRegId;
             }
-
-            return lstEduDetailsbyRegId;
         }
 
 

@@ -9,8 +9,10 @@ namespace SchoolManagementApplicationDAL.Abstract
 {
     public interface IEducatorDetails
     {
-        public List<EducatorDetailsADO> getAllEducatorDetails();
-        public List<EducatorDetailsForDropdownADO> getEducatorDetailsForDropDown();
-        public List<EducatorDetailsADO> getEducatorDetailsByRegistrationId(int registrationId);
+        public List<EducatorDetails> fetchEducatorDetails(int educatorid);
+
+        List<EducatorDetailsForDropDown> getEducatorDetailsForDropDown(int educatorId);
+
+        List<EducatorDetails> getEducatorDetailsByRegistrationId(int educatorId);
     }
 }

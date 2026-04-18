@@ -12,26 +12,52 @@ namespace SchoolManagementApplicationBAL
     public class StudentDetailsBAL
     {
         IStudentDetails stdet = new StudentDetailsRepo();
-        public List<StudentDetailsADO> GetStudentDetails()
+        public List<StudentDetails> fetchStudentDetails(int _inputStudentId)
         {
-            List<StudentDetailsADO> detStudent = new List<StudentDetailsADO>();
-            detStudent = stdet.getAllStudentDetails();
+            List<StudentDetails> detStudent = new List<StudentDetails>();
+            detStudent = stdet.fetchStudentDetails(_inputStudentId);
             return detStudent;
         }
 
-        public List<StudentsDetailsForDropdownADO> GetStudentDetailsForDropdown()
+        public List<StudentDetailsForDropDown> GetStudentDetailsForDropdown(int studentId)
         {
-            List<StudentsDetailsForDropdownADO> detStudentDrpDwn = new List<StudentsDetailsForDropdownADO>();
-            detStudentDrpDwn = stdet.getStudentDetailsForDropDown();
+            List<StudentDetailsForDropDown> detStudentDrpDwn = new List<StudentDetailsForDropDown>();
+            detStudentDrpDwn = stdet.getStudentDetailsForDropDown(studentId);
             return detStudentDrpDwn;
         }
 
-        public List<StudentDetailsADO> GetStudentDetailsByRegistrationId(int selectedStudentRegId)
+        public List<StudentDetails> GetStudentDetailsByRegistrationId(int selectedStudentRegId)
         {
-            List<StudentDetailsADO> detStudentbyRegId = new List<StudentDetailsADO>();
+            List<StudentDetails> detStudentbyRegId = new List<StudentDetails>();
             detStudentbyRegId = stdet.getStudentDetailsByRegistrationId(selectedStudentRegId);
             return detStudentbyRegId;
         }
+
+        //public List<StudentDetailsADO> fetchStdDetails()
+        //{
+        //    List<StudentDetailsADO> lstt = new List<StudentDetailsADO> ();
+        //    foreach (StudentDetailsADO student in stdet.getAllStudentDetails())
+        //    {
+        //        lstt.Add(student);
+        //    }
+
+        //    return lstt;
+        //}
+
+        //public List<StudentDetails> fetchIndvStdDetails(int inputStdId)
+        //{
+        //    List<StudentDetails> lsttt = new List<StudentDetails>();
+        //    foreach (StudentDetails student in stdet.getStudentDetailsForDropDown(inputStdId))
+        //    {
+        //        lsttt.Add(student);
+        //    }
+
+        //    return lsttt;
+        //}
+
+
+
+
 
     }
 }

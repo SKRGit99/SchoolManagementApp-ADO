@@ -6,39 +6,158 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Bloggie.Web.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <link href="~/StyleSheet1.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
 </head>
+
 <body>
     <header>
-
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand" href="/Home/Index" asp-area="" asp-controller="Home" asp-action="Index">ABC International School</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    ABC International School
+                </a>
+                
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/Home/Index" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                       <li class="nav-item">
+                            <a class="nav-link text-light" asp-area=""
+                               asp-controller="Home"
+                               asp-action="Index">
+                                Home
+                            </a>
+                       </li>
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="myDropdown" aria-expanded="false">
-                                Admin
+                            <a class="nav-link dropdown-toggle"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                About
                             </a>
 
-                            <ul class="dropdown-menu dropdown-menu-dark">
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetAllStudentDetails">
+                                        About Us
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                        Director's Desk
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                        Principal's Message
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                        Affiliation
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                        Managing Committee
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                        Fee Structure
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                        Infrastructure
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                        Aims and Objectives
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="Student"
+                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                        History
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light"
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Index">
+                                Admission Process
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light"
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Index">
+                                Academic Calender
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            
+
+                            <a class="nav-link dropdown-toggle"
+                              
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               id="myDropdown"
+                               aria-expanded="false">
+                                Student Corner
+                            </a>
+
+                         @*    <ul class="dropdown-menu dropdown-menu-dark">
                                 <li>
                                     <a class="dropdown-item" href="/Admin/GetStudentDetails" asp-area="" asp-controller="Admin" asp-action="GetStudentDetails">All Student Details</a>
                                 </li>
@@ -46,35 +165,92 @@
                                 <li>
                                     <a class="dropdown-item" asp-area="" href="/Admin/GetStudentDetailsByRegistrationId" asp-controller="Admin" asp-action="GetStudentDetailsByRegistrationId">Individual Student Details</a>
                                 </li>
+                                
                                 <li>
-                                    <a class="dropdown-item" asp-area="" href="/Admin/GetEducatorDetails" asp-controller="Admin" asp-action="GetEducatorDetails">All Educator Details</a>
+                                    <a class="dropdown-item" asp-area="" href="/Admin/GetAllDetails" asp-controller="Admin" asp-action="GGetAllDetails">Consolidated Views</a>
+                                </li>
+                            </ul> *@
+
+                         
+
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Student" asp-action="GetStudentDetails">All Student Details</a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Student" asp-action="GetIndividualStudentDetailsByRegistrationId">Individual Student Details</a>
+                                </li>
+
+             
+                            </ul>
+
+
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               id="myDropdown"
+                               aria-expanded="false">
+                                Educator Corner
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                
+                              <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Educator" asp-action="GetEducatorDetails">Educator Details</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" asp-area="" href="/Admin/GetEducatorDetailsByRegistrationId" asp-controller="Admin" asp-action="GetEducatorDetailsByRegistrationId">Individual Educator Details</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Educator" asp-action="GetIndividualEducatorDetailsByRegistrationId">Individual Educator Details</a>
                                 </li>
+                                
+
                             </ul>
                         </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light"
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Index">
+                                Alumni
+                            </a>
+                        </li>
+                     
                       </ul>
                     </div>
+                        <a class="btn me-3 bg-light text-dark"
+                           asp-area=""
+                           asp-controller="Student"
+                           asp-action="GetIndividualStudentDetailsByRegistrationId">
+                            Login
+                        </a>
+
+                        <a class="btn me-3 bg-light text-dark"
+                           asp-area=""
+                           asp-controller="Educator"
+                           asp-action="GetEducatorDetails">
+                            Register
+                        </a>
                 </div>
 
             </nav>
     </header>
-    <div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+            <div>
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
 
-    <footer class="footer mt-auto py-3 bg-light fixed-bottom" style="text-align:center">
-        <div class="container">
-            <span class="text-muted"> &copy; 2025 - ABC International School.</span>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+            <footer class="footer mt-auto py-3 bg-light fixed-bottom" style="text-align:center">
+                <div class="container">
+                    <span class="text-muted"> &copy; 2025 - ABC International School.</span>
+                </div>
+            </footer>
+            @await RenderSectionAsync("Scripts", required: false)
 
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+    </body>
 </html>

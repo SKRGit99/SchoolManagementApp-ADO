@@ -1,0 +1,100 @@
+﻿@model IEnumerable<SchoolManagementApplicationDAL.Model.StudentDetailsForDropDown>
+
+@{
+    ViewData["Title"] = "ABC International School";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<div class="container py-5">
+    <!-- Row for label + dropdown -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-2 d-flex align-items-center justify-content-end">
+            <label for="studentList" class="fw-bold">Select a Student</label>
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownList("studentList",
+            (SelectList)ViewBag.studentList,
+                        "-- Select Student Name --",
+                        new { @class = "form-select form-select-lg", id = "studentList" })
+        </div>
+    </div>
+
+    <!-- Row for search button -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary btn-lg w-100" id="btnSubmitRegId">
+                Search
+            </button>
+        </div>
+    </div>
+
+<!-- Results Table -->
+    <!-- Results table -->
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <table class="table table-striped table-bordered table-hover align-middle text-center" id="selectedStudentDetailsTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Student Id</th>
+                        <th>Student Name</th>
+                        <th>Roll Number</th>
+                        <th>Class</th>
+                        <th>Section</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+ </div>
+            
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#btnSubmitRegId").click(function () {
+            debugger;
+            var selectedValue = $("#studentList").val();
+              var tbody = $('#selectedStudentDetailsTable tbody');
+                    tbody.empty();
+            // Validate selection
+            if (!selectedValue) {
+                alert("Please select a value first.");
+                return;
+            }
+
+            // Send via AJAX
+            $.ajax({
+                url: '@Url.Action("GetIndividualStudentDetailsByRegistrationId", "Student")', // Controller action
+                type: 'POST',
+                data: { value: selectedValue },
+                success: function (response) {
+                       if (response.length > 0) {
+                           debugger;
+                                $.each(response, function (i, item) {
+                                    debugger;
+                                    tbody.append('<tr><td>' + item.studentId + '</td><td>' + item.studentFullName + '</td><td>' + item.rollNumber + '</td><td>' + item.studentClass + '</td><td>' + item.studentSectionName + '</td><td>' + item.studentFullAddress + '</td><td>' + item.studentPhoneNumber + '</td></tr>');
+                                });
+                            } else {
+                                tbody.append('<tr><td colspan="3">No Student found</td></tr>');
+                            }
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error: " + error);
+                    alert("Something went wrong.");
+                }
+            });
+
+
+        });
+    });
+
+
+ </script>
+    
+
+
+

@@ -12,26 +12,27 @@ namespace SchoolManagementApplicationBAL
     public class EducatorDetailsBAL
     {
         IEducatorDetails edudet = new EducatorDetailsRepo();
-        public List<EducatorDetailsADO> GetEducatorDetails()
+        public List<EducatorDetails> fetchEducatorDetails(int educatorid)
         {
-            List<EducatorDetailsADO> eduDetails = new List<EducatorDetailsADO>();
-            eduDetails = edudet.getAllEducatorDetails();
+            List<EducatorDetails> eduDetails = new List<EducatorDetails>();
+            eduDetails = edudet.fetchEducatorDetails(educatorid);
             return eduDetails;
         }
 
-        public List<EducatorDetailsForDropdownADO> GetEducatorDetailsForDropdown()
+        public List<EducatorDetailsForDropDown> fetchEducatorDetailsForDropDown(int educatorid)
         {
-            List<EducatorDetailsForDropdownADO> detEduDrpDwn = new List<EducatorDetailsForDropdownADO>();
-            detEduDrpDwn = edudet.getEducatorDetailsForDropDown();
-            return detEduDrpDwn;
+            List<EducatorDetailsForDropDown> lstEduDetDrpDwn = new List<EducatorDetailsForDropDown>();
+            lstEduDetDrpDwn = edudet.getEducatorDetailsForDropDown(educatorid);
+            return lstEduDetDrpDwn;
         }
 
-        public List<EducatorDetailsADO> GetEducatorDetailsByRegistrationId(int selectedEduRegId)
+        public List<EducatorDetails> fetchEducatorDetailsByRegistrationId(int educatorid)
         {
-            List<EducatorDetailsADO> detEdubyRegId = new List<EducatorDetailsADO>();
-            detEdubyRegId = edudet.getEducatorDetailsByRegistrationId(selectedEduRegId);
-            return detEdubyRegId;
+            List<EducatorDetails> eduDetRegId = new List<EducatorDetails>();
+            eduDetRegId = edudet.getEducatorDetailsByRegistrationId(educatorid);
+            return eduDetRegId;
         }
+
 
     }
 }

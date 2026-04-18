@@ -10,109 +10,201 @@ using SchoolManagementApplicationDAL.Abstract;
 
 namespace SchoolManagementApplicationDAL.Repository
 {
-    /*Repository: Functionality of Data */
+
     public class StudentDetailsRepo : IStudentDetails
     {
-        SqlConnection conObj = new SqlConnection("Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;");
-        public List<StudentDetailsADO> getAllStudentDetails()
+        //SqlConnection conObj = new SqlConnection("Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;");
+
+        private readonly string _connString = "Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;";
+        public List<StudentDetails> fetchStudentDetails(int studentId)
         {
-            List<StudentDetailsADO> lstStdDetails = new List<StudentDetailsADO>();
+            List<StudentDetails> lstStdDetails = new List<StudentDetails>();
 
-            SqlCommand cmd = new SqlCommand("getStudentDetails", conObj);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            /*
 
-            DataTable dt = new DataTable();
+                        SqlCommand cmd = new SqlCommand("fetchStudentDetails", conObj);
 
-            da.Fill(dt);
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-            foreach (DataRow dr in dt.Rows)
+                        SqlParameter param1 = new SqlParameter
+                        {
+                        ParameterName = "@studentId", 
+                        SqlDbType = SqlDbType.Int, 
+                        Value = studentId, 
+                        Direction = ParameterDirection.Input 
+                        };
+
+                        cmd.Parameters.Add(param1);
+
+                        conObj.Open();
+
+                        cmd.ExecuteNonQuery();
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                        DataTable dt = new DataTable();
+
+            */
+            using (var con = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand("fetchStudentDetails", con))
             {
-                StudentDetailsADO studentDet = new StudentDetailsADO();
-                studentDet.registration_Id = Convert.ToInt32(dr["RegistrationId"]);
-                studentDet.student_name = dr["studentName"].ToString();
-                studentDet.roll_number = Convert.ToInt32(dr["rollNumber"]);
-                studentDet.student_class = Convert.ToInt32(dr["studentClass"]);
-                studentDet.section = Convert.ToChar(dr["studentSection"]);
-                studentDet.address = dr["studentAddress"].ToString();
-                studentDet.mobile_number = dr["studentMobileNumber"].ToString();
-                lstStdDetails.Add(studentDet);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@studentId", SqlDbType.Int) { Value = studentId });
+
+                var da = new SqlDataAdapter(cmd);
+                var ds = new DataSet();
+
+                da.Fill(ds);
+
+                DataTable dt = new DataTable();
+                dt = ds.Tables[0];
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    StudentDetails studentDet = new StudentDetails();
+
+                    studentDet.SchoolRelationShipCategoryId = Convert.ToInt32(dr["RelationshipCategoryId"]);
+                    studentDet.SchoolRelationShipCategoryName = dr["RelationshipCategoryName"].ToString();
+                    studentDet.SchoolRelationShipId = Convert.ToInt32(dr["RelationshipId"]);
+                    studentDet.SchoolName = dr["SchoolName"].ToString();
+
+                    studentDet.StudentFirstName = dr["StudentFirstName"].ToString();
+                    studentDet.StudentMiddleName = dr["StudentMiddleName"].ToString();
+                    studentDet.StudentLastName = dr["StudentLastName"].ToString();
+
+                    studentDet.IsRegisteredStudent = Convert.ToChar(dr["IsRegisteredStudent"]);
 
 
+                    studentDet.RollNumber = Convert.ToInt32(dr["RollNumber"]);
+                    studentDet.StudentClass = Convert.ToInt32(dr["ClassId"]);
+                    studentDet.StudentSectionId = Convert.ToInt32(dr["SectionId"]);
+                    studentDet.StudentSectionName = Convert.ToChar(dr["SectionName"]);
+
+                    studentDet.StudentCity = dr["City"].ToString();
+                    studentDet.StudentState = dr["HomeState"].ToString();
+                    studentDet.StudentCountry = dr["Country"].ToString();
+
+
+                    lstStdDetails.Add(studentDet);
+
+
+                }
             }
+
+
 
             return lstStdDetails;
 
 
         }
 
-        public List<StudentsDetailsForDropdownADO> getStudentDetailsForDropDown()
+        public List<StudentDetailsForDropDown> getStudentDetailsForDropDown(int studentId)
         {
-            List<StudentsDetailsForDropdownADO> lstStdDrpDwn = new List<StudentsDetailsForDropdownADO>();
-            SqlCommand cmd = new SqlCommand("getStudentDetails", conObj);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            /*
+                List<StudentDetails> lstStdDrpDwn = new List<StudentDetails>();
+                SqlCommand cmd = new SqlCommand("getStudentDetails", conObj);
 
-            DataTable dt = new DataTable();
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-            da.Fill(dt);
+                DataTable dt = new DataTable();
 
-            foreach (DataRow dr in dt.Rows)
+                da.Fill(dt);
+             
+             
+             
+             
+             */
+
+            List<StudentDetailsForDropDown> lstStdDrpDwn = new List<StudentDetailsForDropDown>();
+            using (var con = new SqlConnection(_connString))
+            using (var cmd = new SqlCommand("fetchStudentDetails", con))
             {
-                StudentsDetailsForDropdownADO studentDetailsByDropDown = new StudentsDetailsForDropdownADO();
-                studentDetailsByDropDown.registration_Id = Convert.ToInt32(dr["RegistrationId"]);
-                studentDetailsByDropDown.student_name = dr["studentName"].ToString();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@studentId", SqlDbType.Int) { Value = studentId });
+
+                var da = new SqlDataAdapter(cmd);
+
+                var ds = new DataSet();
+
+                da.Fill(ds);
+
+                DataTable dt = new DataTable();
+                dt = ds.Tables[1];
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    StudentDetailsForDropDown studentDetailsByDropDown = new StudentDetailsForDropDown();
+                    studentDetailsByDropDown.StudentIdForDrpDwn = Convert.ToInt32(dr["RelationshipId"]);
+                    studentDetailsByDropDown.StudentFullNameForDrpDwn = dr["StudentName"].ToString();
 
 
-                lstStdDrpDwn.Add(studentDetailsByDropDown);
+                    lstStdDrpDwn.Add(studentDetailsByDropDown);
+                }
+                return lstStdDrpDwn;
             }
-            return lstStdDrpDwn;
         }
 
-        public List<StudentDetailsADO> getStudentDetailsByRegistrationId(int registrationId)
-        {
-            List<StudentDetailsADO> lstStdDetailsbyRegId = new List<StudentDetailsADO>();
-
-            SqlCommand cmd = new SqlCommand("getStudentDetailsByRegId", conObj);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            SqlParameter param1 = new SqlParameter
+        public List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId)
             {
-                ParameterName = "@registrationId", //Parameter name defined in stored procedure
-                SqlDbType = SqlDbType.Int, //Data Type of Parameter
-                Value = registrationId, //Value passes to the paramtere
-                Direction = ParameterDirection.Input //Specify the parameter as input
-            };
-            //Add the parameter to the Parameters property of SqlCommand object
-            cmd.Parameters.Add(param1);
-            conObj.Open();
+                List<StudentDetails> lstStdDetailsbyRegId = new List<StudentDetails>();
 
-            cmd.ExecuteNonQuery();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //SqlCommand cmd = new SqlCommand("getStudentDetailsByRegId", conObj);
+                //cmd.CommandType = CommandType.StoredProcedure;
 
-            DataTable dt = new DataTable();
+                //SqlParameter param1 = new SqlParameter
+                //{
+                //    ParameterName = "@registrationId", //Parameter name defined in stored procedure
+                //    SqlDbType = SqlDbType.Int, //Data Type of Parameter
+                //    Value = registrationId, //Value passes to the paramete
+                //    Direction = ParameterDirection.Input //Specify the parameter as input
+                //};
+                ////Add the parameter to the Parameters property of SqlCommand object
+                //cmd.Parameters.Add(param1);
+                //conObj.Open();
 
-            da.Fill(dt);
+                //cmd.ExecuteNonQuery();
+                //SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-            foreach (DataRow dr in dt.Rows)
-            {
-                StudentDetailsADO studentDetByRegId = new StudentDetailsADO();
-                studentDetByRegId.registration_Id = Convert.ToInt32(dr["RegistrationId"]);
-                studentDetByRegId.student_name = dr["studentName"].ToString();
-                studentDetByRegId.roll_number = Convert.ToInt32(dr["rollNumber"]);
-                studentDetByRegId.student_class = Convert.ToInt32(dr["studentClass"]);
-                studentDetByRegId.section = Convert.ToChar(dr["studentSection"]);
-                studentDetByRegId.address = dr["studentAddress"].ToString();
-                studentDetByRegId.mobile_number = dr["studentMobileNumber"].ToString();
-                lstStdDetailsbyRegId.Add(studentDetByRegId);
+                //DataTable dt = new DataTable();
 
+                //da.Fill(dt);
+
+                using (var con = new SqlConnection(_connString))
+                using (var cmd = new SqlCommand("fetchStudentDetails", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@studentId", SqlDbType.Int) { Value = registrationId });
+
+                    var da = new SqlDataAdapter(cmd);
+
+                    var ds = new DataSet();
+
+                    da.Fill(ds);
+
+                    DataTable dt = new DataTable();
+                    dt = ds.Tables[0];
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        StudentDetails studentDetByRegId = new StudentDetails();
+                        studentDetByRegId.StudentId = Convert.ToInt32(dr["RelationshipId"]);
+                        studentDetByRegId.StudentFullName = dr["StudentName"].ToString();
+                        studentDetByRegId.RollNumber = Convert.ToInt32(dr["RollNumber"]);
+                        studentDetByRegId.StudentClass = Convert.ToInt32(dr["ClassId"]);
+                        studentDetByRegId.StudentSectionName = Convert.ToChar(dr["SectionName"]);
+                        studentDetByRegId.StudentFullAddress = dr["StudentAddress"].ToString();
+                        studentDetByRegId.StudentPhoneNumber = dr["StudentPhoneNumber"].ToString();
+                        lstStdDetailsbyRegId.Add(studentDetByRegId);
+
+
+                    }
+
+                    return lstStdDetailsbyRegId;
+                }
 
             }
-
-            return lstStdDetailsbyRegId;
-        }
 
     }
-
-
 }

@@ -1,0 +1,189 @@
+﻿@model IEnumerable<SchoolManagementApplicationDAL.Model.StudentDetails>
+
+@{
+    ViewData["Title"] = "ABC International School";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="row align-items-center g-4">
+        <!-- Text Section -->
+        <div class="col-12 col-lg-8">
+            <h2 class="fw-bold text-primary mb-3">
+                ABC International School
+            </h2>
+            <h4 class="text-secondary mb-3">
+                Student Details
+            </h4>
+            <p class="lead text-muted">
+                Discover the talented students of ABC International School, each bringing their own
+                unique strengths, aspirations, and achievements. This section highlights their academic
+                journey, classes, and the vibrant spirit they contribute to our community.
+            </p>
+            <p>
+                Explore the profiles below to learn more about our students — their dedication,
+                creativity, and the promise they hold for the future. Together, they represent the
+                bright foundation of our institution.
+            </p>
+
+        </div>
+
+        <!-- Image Section -->
+        <div class="col-12 col-lg-4 text-center">
+            <img src="~/pexels-photo-57690.jpeg" class="img-fluid rounded shadow-sm" alt="Educator illustration" />
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <!-- Scrollable wrapper -->
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover align-middle text-center shadow">
+                    <thead class="table-dark">
+                    <tr>
+                    @* <th>
+                        @Html.DisplayNameFor(model => model.SchoolName)
+                    </th> *@
+                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.RollNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentFirstName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentMiddleName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentLastName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentClass)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentSectionId)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentSectionName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentCity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentState)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentCountry)
+                    </th>
+
+                    <th style="min-width:200px;">Actions</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                       @*  <td>
+                            @Html.DisplayFor(modelItem => item.SchoolName)
+                        </td> *@
+                       <td>
+                            @Html.DisplayFor(modelItem => item.RollNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentFirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentMiddleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentLastName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentClass)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentSectionId)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentSectionName)
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentCity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentState)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentCountry)
+                        </td>
+
+                        <td class="d-flex justify-content-around" style="min-width:200px;">
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+</div>
+@{
+    var recordsPerPage = 10;
+    var totalRecords = ViewBag.TotalRecords == null ? 0 : ViewBag.TotalRecords;
+    int numberOfButtons;
+    if (totalRecords % recordsPerPage == 0)
+    {
+        numberOfButtons = totalRecords / recordsPerPage;
+    }
+    else
+    {
+        numberOfButtons = (totalRecords / recordsPerPage) + 1;
+    }
+
+    int currentPage = ViewBag.CurrentPage == null ? 1 : (int)ViewBag.CurrentPage;
+}
+
+<nav aria-label="Page navigation example">
+
+    <ul class="pagination justify-content-center">
+        <!-- Previous -->
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link" asp-controller="Student" asp-action="GetStudentDetails" asp-route-page="@(currentPage - 1)">Previous</a>
+        </li>
+
+        <!-- Page Numbers -->
+        @for (int i = 1; i <= numberOfButtons; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" asp-controller="Student" asp-action="GetStudentDetails" asp-route-page="@i">@i</a>
+
+
+            </li>
+        }
+
+        <!-- Next -->
+        <li class="page-item @(currentPage == numberOfButtons ? "disabled" : "")">
+            <a class="page-link" asp-controller="Student" asp-action="GetStudentDetails" asp-route-page="@(currentPage + 1)">Next</a>
+        </li>
+    </ul>
+</nav>
+
+
+

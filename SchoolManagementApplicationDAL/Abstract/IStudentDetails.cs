@@ -9,11 +9,14 @@ namespace SchoolManagementApplicationDAL.Abstract
 {
     public interface IStudentDetails
     {
-        public List<StudentDetailsADO> getAllStudentDetails();
+        public List<StudentDetails> fetchStudentDetails(int _inputStudentId);
 
-        public List<StudentsDetailsForDropdownADO> getStudentDetailsForDropDown();
-        public List<StudentDetailsADO> getStudentDetailsByRegistrationId(int registrationId);
+        public List<StudentDetailsForDropDown> getStudentDetailsForDropDown(int studentId);
+        
+        public List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId);
 
-
+        
     }
+
+   
 }
