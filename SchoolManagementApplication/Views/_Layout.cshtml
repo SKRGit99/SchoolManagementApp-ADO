@@ -13,7 +13,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+ 
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    ABC International School
+                    SKR International School
                 </a>
                 
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -239,18 +239,24 @@
 
             </nav>
     </header>
-            <div>
-                <main role="main" class="pb-3">
-                    @RenderBody()
-                </main>
-            </div>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
 
-            <footer class="footer mt-auto py-3 bg-light fixed-bottom" style="text-align:center">
-                <div class="container">
-                    <span class="text-muted"> &copy; 2025 - ABC International School.</span>
-                </div>
-            </footer>
-            @await RenderSectionAsync("Scripts", required: false)
+
+    @await RenderSectionAsync("Scripts", required: false)
+    
+    
+    <!-- Copyright Section -->
+    <div class="container-fluid bg-dark text-white py-2">
+        <div class="row">
+            <div class="col text-center">
+                <small>&copy; 2026 SKR International School. All rights reserved.</small>
+            </div>
+        </div>
+    </div>
 
     </body>
 </html>

@@ -2,25 +2,303 @@
     ViewData["Title"] = "ABC International School - Home";
     Layout = "~/Views/_Layout.cshtml";
 }
-<div class="container">
-    <div class="row align-items-center g-5 py-5">
-        <div class="col-12 col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3">
-                Welcome to ABC International School
+
+<!-- Hero Section -->
+<div class="container py-5">
+    <div class="row align-items-center g-5">
+        <!-- Text Section -->
+        <div class="col-12 col-lg-6 text-center text-lg-start">
+            <h1 class="fw-bold text-primary mb-3" style="font-size:2.2rem;">
+                Welcome to SKR International School
             </h1>
-            <p class="lead">
-                At ABC International School, we are committed to nurturing young minds and shaping them into confident, responsible and compassionate global citizens.
+            <p class="text-muted mb-3" style="font-size:1.1rem;">
+                A place where learning meets inspiration. Our mission is to nurture young minds,
+                encourage creativity, and build a strong foundation for lifelong success.
             </p>
-            <p>We invite you to explore our website and learn more about the stirring and exciting life at ABC International. Together, let us lay the foundation for a bright future..</p>
-
+            <p class="text-muted" style="font-size:1rem;">
+                Explore our vibrant community of students and educators, discover our programs,
+                and experience the excellence that defines our institution.
+            </p>
+            <div class="mt-4">
+                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                    Explore Students
+                </a>
+                <a href="@Url.Action("GetEducatorDetails", "Educator")" class="btn btn-outline-primary px-4 py-2 ms-2">
+                    Meet Educators
+                </a>
+            </div>
         </div>
 
-        <div class="col-12 col-lg-6">
-            <img src="~/pexels-photo-57690.jpeg" class="d-block mx-lg-auto img-fluid" width="500" />
+        <!-- Image Section -->
+        <div class="col-12 col-lg-6 text-center">
+            <img src="~/images/school campus.jpg"
+                 class="img-fluid rounded shadow-lg"
+                 alt="School campus"
+                 style="max-height:300px;" />
         </div>
-
     </div>
 </div>
+
+
+<div class="container py-5">
+    <div class="row align-items-center g-5">
+        <!-- Director Image -->
+        <div class="col-12 col-md-5 text-center">
+            <img src="~/images/school director 002.png" class="img-fluid rounded-circle shadow-lg mb-3" style="max-height:350px;" />
+        </div>
+
+        <!-- Director Message -->
+        <div class="col-12 col-md-7">
+            <h2 class="fw-bold text-primary mb-3">From the Director's Desk</h2>
+            <p class="lead text-muted">
+                Welcome to SKR International School, where we believe education is the key to unlocking
+                every child’s potential. Our mission is to provide a nurturing environment that fosters
+                creativity, innovation, and lifelong learning.
+            </p>
+            <p>
+                As Director, I am proud to lead a team of dedicated educators who inspire students to
+                achieve excellence not only in academics but also in character and values. Together,
+                we strive to create a community where curiosity thrives and every student feels empowered
+                to shape their future.
+            </p>
+            <p class="fw-bold text-secondary mb-0">
+                — Director, SKR International School
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container py-5">
+    <h2 class="fw-bold text-primary mb-4 text-center">School Portal</h2>
+    <p class="text-muted">
+        Use the tabs above to explore different sections of our school.
+        - The <strong>Admissions</strong> tab lets you start new student enrollments.
+        - The <strong>Students</strong> tab shows student details and performance.
+        - The <strong>Educators</strong> tab highlights teacher profiles and classes.
+        - The <strong>Exams</strong> tab covers schedules and results.
+        - The <strong>Finance</strong> tab manages fees and reports.
+        - The <strong>Achievements</strong> tab celebrates awards and recognitions.
+    </p>
+    <p class="text-muted">
+        Click on any tab to view its details and take relevant actions.
+    </p>
+    <!-- Nav Tabs -->
+    <ul class="nav nav-tabs justify-content-center" id="schoolTabs" role="tablist">
+        <li class="nav-item flex-fill text-center" role="presentation">
+            <button class="nav-link active w-100" id="admission-tab" data-bs-toggle="tab" data-bs-target="#admission" type="button" role="tab">Admissions</button>
+        </li>
+        <li class="nav-item flex-fill text-center" role="presentation">
+            <button class="nav-link w-100" id="student-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab">Students</button>
+        </li>
+        <li class="nav-item flex-fill text-center" role="presentation">
+            <button class="nav-link w-100" id="educator-tab" data-bs-toggle="tab" data-bs-target="#educator" type="button" role="tab">Educators</button>
+        </li>
+        <li class="nav-item flex-fill text-center" role="presentation">
+            <button class="nav-link w-100" id="exam-tab" data-bs-toggle="tab" data-bs-target="#exam" type="button" role="tab">Exams</button>
+        </li>
+        <li class="nav-item flex-fill text-center" role="presentation">
+            <button class="nav-link w-100" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance" type="button" role="tab">Finance</button>
+        </li>
+        <li class="nav-item flex-fill text-center" role="presentation">
+            <button class="nav-link w-100" id="achievements-tab" data-bs-toggle="tab" data-bs-target="#achievements" type="button" role="tab">Achievements</button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content border border-top-0 p-5 shadow-sm bg-white text-center" id="schoolTabsContent">
+        <!-- Admissions -->
+        <div class="tab-pane fade show active" id="admission" role="tabpanel">
+            <h3 class="fw-bold text-secondary mb-3">Admissions</h3>
+            <p class="text-muted">Manage new student admissions and enrollment processes here.</p>
+            <button class="btn btn-primary btn-lg mt-3">Take New Admission</button>
+        </div>
+
+        <!-- Students -->
+        <div class="tab-pane fade" id="student" role="tabpanel">
+            <h3 class="fw-bold text-secondary mb-3">Students</h3>
+            <p class="text-muted">View and manage student details, classes, and performance records.</p>
+            <button class="btn btn-outline-primary btn-lg mt-3">Go to Student Section</button>
+        </div>
+
+        <!-- Educators -->
+        <div class="tab-pane fade" id="educator" role="tabpanel">
+            <h3 class="fw-bold text-secondary mb-3">Educators</h3>
+            <p class="text-muted">Access educator profiles, departments, and assigned classes.</p>
+            <button class="btn btn-outline-primary btn-lg mt-3">Go to Educator Section</button>
+        </div>
+
+        <!-- Exams -->
+        <div class="tab-pane fade" id="exam" role="tabpanel">
+            <h3 class="fw-bold text-secondary mb-3">Exams</h3>
+            <p class="text-muted">Schedule, manage, and review exam results for all classes.</p>
+            <button class="btn btn-outline-primary btn-lg mt-3">Go to Exam Section</button>
+        </div>
+
+        <!-- Finance -->
+        <div class="tab-pane fade" id="finance" role="tabpanel">
+            <h3 class="fw-bold text-secondary mb-3">Finance</h3>
+            <p class="text-muted">Track school fees, expenses, and financial reports.</p>
+            <button class="btn btn-outline-primary btn-lg mt-3">Go to Finance Section</button>
+        </div>
+
+        <!-- Achievements -->
+        <div class="tab-pane fade" id="achievements" role="tabpanel">
+            <h3 class="fw-bold text-secondary mb-3">Achievements</h3>
+            <p class="text-muted">Celebrate student and school achievements, awards, and recognitions.</p>
+            <button class="btn btn-outline-primary btn-lg mt-3">Go to Achievements Section</button>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <h2 class="fw-bold text-primary mb-4 text-center">Our Facilities</h2>
+    <div class="row g-4">
+        <!-- Tech Savvy Classes -->
+        <div class="col-md-4 text-center">
+            <img src="~/images/school class room.png" class="img-fluid rounded shadow-sm mb-3" alt="Tech Savvy Classes" />
+            <h4 class="fw-bold">Tech Savvy Classes</h4>
+            <p class="text-muted">Smart classrooms equipped with laptops, tablets, and interactive boards to enhance learning.</p>
+            <a href="/Blog" class="btn btn-outline-primary px-4 py-2">Read more</a>
+        </div>
+
+        <!-- Laboratories -->
+        <div class="col-md-4 text-center">
+            <img src="~/images/school laboratory 001.jpg" class="img-fluid rounded shadow-sm mb-3" alt="Laboratories" />
+            <h4 class="fw-bold">Laboratories</h4>
+            <p class="text-muted">Modern science labs with advanced equipment for experiments and hands‑on learning.</p>
+            <a href="/Blog" class="btn btn-outline-primary px-4 py-2">Read more</a>
+        </div>
+
+        <!-- Activity Room -->
+        <div class="col-md-4 text-center">
+            <img src="~/images/school library 001.jpg" class="img-fluid rounded shadow-sm mb-3" alt="Activity Room" />
+            <h4 class="fw-bold">Rich Library</h4>
+            <p class="text-muted">A hub of knowledge with resources to support every student’s curiosity.</p>
+            <a href="/Blog" class="btn btn-outline-primary px-4 py-2">Read more</a>
+        </div>
+
+        <!-- AI Labs -->
+        <div class="col-md-4 text-center">
+            <img src="~/images/ai lab image 002.png" class="img-fluid rounded shadow-sm mb-3" alt="AI Labs" />
+            <h4 class="fw-bold">AI Labs</h4>
+            <p class="text-muted">Cutting‑edge AI labs where students explore robotics, machine learning, and innovation.</p>
+        </div>
+
+        <!-- Dance and Music Studio -->
+        <div class="col-md-4 text-center">
+            <img src="~/images/sports activities 002.jpg" class="img-fluid rounded shadow-sm mb-3" alt="Dance and Music Studio" />
+            <h4 class="fw-bold">Sports Activities</h4>
+            <p class="text-muted">Encouraging teamwork, discipline, and holistic development beyond academics.</p>
+            <a href="/Blog" class="btn btn-outline-primary px-4 py-2">Read more</a>
+        </div>
+
+        <!-- Transport -->
+        <div class="col-md-4 text-center">
+            <img src="~/images/school transport 001.jpg" class="img-fluid rounded shadow-sm mb-3" alt="Transport" />
+            <h4 class="fw-bold">Transport</h4>
+            <p class="text-muted">Safe and reliable school buses ensuring comfortable travel for students.</p>
+            <a href="/Blog" class="btn btn-outline-primary px-4 py-2">Read more</a>
+        </div>
+    </div>
+</div>
+
+<!-- Vision Section -->
+<div class="container py-5">
+    <div class="row align-items-center g-5">
+        <!-- Text -->
+        <div class="col-12 col-lg-6">
+            <h2 class="fw-bold text-primary mb-3">Our Vision</h2>
+            <p class="lead text-muted">
+                At ABC International School, our vision is to empower students with knowledge,
+                creativity, and values that prepare them for a bright future. We believe in
+                holistic education that nurtures both academic excellence and personal growth.
+            </p>
+            <p>
+                With dedicated educators, modern facilities, and a supportive environment,
+                we strive to inspire every child to reach their full potential.
+            </p>
+        </div>
+        <!-- Image -->
+        <div class="col-12 col-lg-6 text-center">
+            <img src="~/images/school vision final.png" class="img-fluid rounded shadow-lg" alt="School vision illustration"
+                 alt="School campus"
+                 style="max-height:300px;" />
+        </div>
+    </div>
+</div>
+
+<!-- Explore More Section -->
+<div class="container py-5">
+    <div class="row justify-content-center text-center">
+        <div class="col-12 col-md-10">
+            <h3 class="fw-bold text-primary mb-3">Explore More</h3>
+            <p class="lead text-muted mb-4">
+                Discover more about SKR International School through our blog, galleries, and admissions page.
+                Stay connected with our latest updates, explore student life, and learn how to join our vibrant community.
+            </p>
+
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="/Blog" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-journal-text me-2"></i> School Blog
+                </a>
+                <a href="/VideoGallery" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-camera-video me-2"></i> Video Gallery
+                </a>
+                <a href="/ImageGallery" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-images me-2"></i> Image Gallery
+                </a>
+                <a href="/Admissions" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-person-plus me-2"></i> Admissions
+                </a>
+                <a href="/Contact" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-envelope me-2"></i> Contact Page
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Container 1: Logo + Contact Details -->
+<div class="container py-5">
+    <div class="row align-items-center justify-content-between">
+        <!-- Logo -->
+        <div class="col-12 col-lg-3">
+            <img src="~/images/school logo.png" class="img-fluid" alt="ABC International School Logo" style="max-height:200px;" />
+        </div>
+        <div class="col-12 col-lg-4">
+            <h3 class="fw-bold text-primary mb-3">Contact Us</h3>
+            <p class="lead text-muted mb-1">
+                SKR International School<br />
+                123 Learning Avenue, Mulshi, Maharashtra, India
+            </p>
+            <p class="mb-0">
+                Phone: +91 98765 43210<br />
+                Email: info@abcschool.com
+            </p>
+        </div>
+        <div class="col-12 col-lg-5">
+            <h3 class="fw-bold text-primary mb-3">Contact Us</h3>
+            <p class="lead text-muted mb-1">
+                SKR International School<br />
+                123 Learning Avenue, Mulshi, Maharashtra, India
+            </p>
+            <p class="mb-0">
+                Phone: +91 98765 43210<br />
+                Email: info@abcschool.com
+            </p>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+
 
 
 
