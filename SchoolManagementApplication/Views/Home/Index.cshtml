@@ -34,7 +34,7 @@
             <img src="~/images/school campus.jpg"
                  class="img-fluid rounded shadow-lg"
                  alt="School campus"
-                 style="max-height:300px;" />
+                 style="max-height:300px;"/>
         </div>
     </div>
 </div>
@@ -44,7 +44,8 @@
     <div class="row align-items-center g-5">
         <!-- Director Image -->
         <div class="col-12 col-md-5 text-center">
-            <img src="~/images/school director 002.png" class="img-fluid rounded-circle shadow-lg mb-3" style="max-height:350px;" />
+            @* <img src="~/images/school director 002.png" class="img-fluid rounded-circle shadow-lg mb-3" style="max-height:350px;" /> *@
+            <img src="~/images/school director 002.png" class="img-fluid rounded shadow-lg" alt="school director" style="max-height:400px;" />
         </div>
 
         <!-- Director Message -->
@@ -64,7 +65,12 @@
             <p class="fw-bold text-secondary mb-0">
                 — Director, SKR International School
             </p>
+            <p></p>
+            <a href="@Url.Action("displayDirectorMessage", "Home")" class="btn btn-primary px-4 py-2">
+                Read More
+            </a>
         </div>
+        
     </div>
 </div>
 
@@ -112,43 +118,71 @@
         <div class="tab-pane fade show active" id="admission" role="tabpanel">
             <h3 class="fw-bold text-secondary mb-3">Admissions</h3>
             <p class="text-muted">Manage new student admissions and enrollment processes here.</p>
-            <button class="btn btn-primary btn-lg mt-3">Take New Admission</button>
+            <div class="mt-4">
+                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                    Go to Admission Section
+                </a>
+            </div>
         </div>
 
         <!-- Students -->
         <div class="tab-pane fade" id="student" role="tabpanel">
             <h3 class="fw-bold text-secondary mb-3">Students</h3>
             <p class="text-muted">View and manage student details, classes, and performance records.</p>
-            <button class="btn btn-outline-primary btn-lg mt-3">Go to Student Section</button>
+            
+            <div class="mt-4">
+                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                    Go to Students Section
+                </a>
+            </div>
         </div>
 
         <!-- Educators -->
         <div class="tab-pane fade" id="educator" role="tabpanel">
             <h3 class="fw-bold text-secondary mb-3">Educators</h3>
             <p class="text-muted">Access educator profiles, departments, and assigned classes.</p>
-            <button class="btn btn-outline-primary btn-lg mt-3">Go to Educator Section</button>
+            
+            <div class="mt-4">
+                <a href="@Url.Action("GetEducatorDetails", "Educator")" class="btn btn-primary px-4 py-2">
+                    Go to Educators Section
+                </a>
+
+            </div>
         </div>
 
         <!-- Exams -->
         <div class="tab-pane fade" id="exam" role="tabpanel">
             <h3 class="fw-bold text-secondary mb-3">Exams</h3>
             <p class="text-muted">Schedule, manage, and review exam results for all classes.</p>
-            <button class="btn btn-outline-primary btn-lg mt-3">Go to Exam Section</button>
+            <div class="mt-4">
+                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                    Go to Exams Section
+                </a>
+
+            </div>
         </div>
 
         <!-- Finance -->
         <div class="tab-pane fade" id="finance" role="tabpanel">
             <h3 class="fw-bold text-secondary mb-3">Finance</h3>
             <p class="text-muted">Track school fees, expenses, and financial reports.</p>
-            <button class="btn btn-outline-primary btn-lg mt-3">Go to Finance Section</button>
+            <div class="mt-4">
+                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                    Go to Finance Section
+                </a>
+            </div>
         </div>
 
         <!-- Achievements -->
         <div class="tab-pane fade" id="achievements" role="tabpanel">
             <h3 class="fw-bold text-secondary mb-3">Achievements</h3>
             <p class="text-muted">Celebrate student and school achievements, awards, and recognitions.</p>
-            <button class="btn btn-outline-primary btn-lg mt-3">Go to Achievements Section</button>
-        </div>
+            <div class="mt-4">
+                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                    Go to Achievements Section
+                </a>
+            </div>
+         </div>
     </div>
 </div>
 
@@ -184,6 +218,7 @@
             <img src="~/images/ai lab image 002.png" class="img-fluid rounded shadow-sm mb-3" alt="AI Labs" />
             <h4 class="fw-bold">AI Labs</h4>
             <p class="text-muted">Cutting‑edge AI labs where students explore robotics, machine learning, and innovation.</p>
+            <a href="/Blog" class="btn btn-outline-primary px-4 py-2">Read more</a>
         </div>
 
         <!-- Dance and Music Studio -->
@@ -240,18 +275,17 @@
             </p>
 
             <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="/Blog" class="btn btn-outline-primary px-4 py-2">
-                    <i class="bi bi-journal-text me-2"></i> School Blog
+                <a href="/ImageGallery" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-images me-2"></i> Image Gallery
                 </a>
                 <a href="/VideoGallery" class="btn btn-outline-primary px-4 py-2">
                     <i class="bi bi-camera-video me-2"></i> Video Gallery
                 </a>
-                <a href="/ImageGallery" class="btn btn-outline-primary px-4 py-2">
-                    <i class="bi bi-images me-2"></i> Image Gallery
+
+                <a href="/Blog" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-journal-text me-2"></i> School Blog
                 </a>
-                <a href="/Admissions" class="btn btn-outline-primary px-4 py-2">
-                    <i class="bi bi-person-plus me-2"></i> Admissions
-                </a>
+                
                 <a href="/Contact" class="btn btn-outline-primary px-4 py-2">
                     <i class="bi bi-envelope me-2"></i> Contact Page
                 </a>
@@ -268,7 +302,7 @@
         <div class="col-12 col-lg-3">
             <img src="~/images/school logo.png" class="img-fluid" alt="ABC International School Logo" style="max-height:200px;" />
         </div>
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-3">
             <h3 class="fw-bold text-primary mb-3">Contact Us</h3>
             <p class="lead text-muted mb-1">
                 SKR International School<br />
@@ -279,18 +313,29 @@
                 Email: info@abcschool.com
             </p>
         </div>
-        <div class="col-12 col-lg-5">
-            <h3 class="fw-bold text-primary mb-3">Contact Us</h3>
-            <p class="lead text-muted mb-1">
-                SKR International School<br />
-                123 Learning Avenue, Mulshi, Maharashtra, India
-            </p>
-            <p class="mb-0">
-                Phone: +91 98765 43210<br />
-                Email: info@abcschool.com
-            </p>
+        <div class="col-12 col-lg-6 align-items-center">
+            <h3 class="fw-bold text-primary  mb-3">Important Links</h3>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="https://www.cbse.gov.in" target="_blank" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-link-45deg me-2"></i> CBSE Official Website
+                </a>
+                <a href="https://nta.ac.in" target="_blank" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-journal-text me-2"></i> National Testing Agency (NTA)
+                </a>
+                <a href="https://www.olympiadsuccess.com" target="_blank" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-award me-2"></i> Olympiad Success
+                </a>
+                <a href="https://www.khanacademy.org" target="_blank" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-book me-2"></i> Khan Academy
+                </a>
+                <a href="https://www.unacademy.com" target="_blank" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-mortarboard me-2"></i> Unacademy
+                </a>
+                <a href="https://www.coursera.org" target="_blank" class="btn btn-outline-primary px-4 py-2">
+                    <i class="bi bi-globe me-2"></i> Coursera
+                </a>
+            </div>
         </div>
-        
     </div>
 </div>
 

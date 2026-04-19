@@ -14,6 +14,20 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
  
+    <style>
+        .content-wrapper {
+            min-height: 200vh; /* ensures enough space before footer */
+            padding-bottom: 100px; /* gap before footer */
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -46,8 +60,8 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
-                                       asp-action="GetAllStudentDetails">
+                                       asp-controller="Home"
+                                       asp-action="displayAboutUs">
                                         About Us
                                     </a>
                                 </li>
@@ -55,8 +69,8 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
-                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                       asp-controller="Home"
+                                       asp-action="displayDirectorMessage">
                                         Director's Desk
                                     </a>
                                 </li>
@@ -75,7 +89,7 @@
                                        asp-area=""
                                        asp-controller="Student"
                                        asp-action="GetIndividualStudentDetailsByRegistrationId">
-                                        Affiliation
+                                        History
                                     </a>
                                 </li>
 
@@ -118,9 +132,9 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
-                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
-                                        History
+                                       asp-controller="Home"
+                                       asp-action="displayGallery">
+                                        Gallery
                                     </a>
                                 </li>
 
@@ -244,19 +258,23 @@
             @RenderBody()
         </main>
     </div>
-
-
+    
     @await RenderSectionAsync("Scripts", required: false)
     
-    
     <!-- Copyright Section -->
-    <div class="container-fluid bg-dark text-white py-2">
+    <footer>
+        <small>&copy; 2026 SKR International School. All rights reserved.</small>
+    </footer>
+
+    @* <div class="container-fluid bg-dark text-white py-2">
         <div class="row">
             <div class="col text-center">
                 <small>&copy; 2026 SKR International School. All rights reserved.</small>
             </div>
         </div>
-    </div>
+    </div> *@
+
+    
 
     </body>
 </html>

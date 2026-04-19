@@ -15,5 +15,20 @@ namespace SchoolManagementApplication.Controllers
             
         }
 
+        public IActionResult displayAboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult displayDirectorMessage()
+        {
+            return View();
+        }
+
+        public IActionResult displayGallery()
+        {
+            return View();
+        }
+
     }
 }
