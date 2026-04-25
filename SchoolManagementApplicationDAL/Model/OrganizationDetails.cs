@@ -8,6 +8,8 @@ namespace SchoolManagementApplicationDAL.Model
 {
     public class OrganizationDetails
     {
+        /*------------------------------------------ Organization details ---------------------------------------------*/
+
             string _schoolCode = string.Empty;
             protected string SchoolCode
             {
@@ -187,6 +189,27 @@ namespace SchoolManagementApplicationDAL.Model
             }
 
 
+        /*--------------------------------- Organization details -----------------------------------------------------*/
+
+
+        /*--------------------------------- Organization - Individual relationship details -----------------------------
+
+
+
+        _schoolRelationShipId = > This establishes relationship of an Individual with the Organization.
+        
+                                    Example: EmployeeId for employees like EducatorId or StudentId
+         
+         
+         */
+        
+            int _schoolRelationShipId;            
+            public int SchoolRelationShipId
+            {
+                get { return (int)_schoolRelationShipId; }
+                set { _schoolRelationShipId = value; }
+            }
+
             int _schoolRelationShipCategoryId;
             internal int SchoolRelationShipCategoryId
             {
@@ -210,14 +233,19 @@ namespace SchoolManagementApplicationDAL.Model
 
             }
 
-            int _schoolRelationShipId;
-            public int SchoolRelationShipId
+            int _schoolDepartmentId;        //Department of the Related Individual
+            public int SchoolDepartmentId
             {
-                get { return (int)_schoolRelationShipId; }
-                set { _schoolRelationShipId = value; }
+                get { return (int)_schoolDepartmentId; }
+                set
+                {
+                    if (value < 0) throw new ArgumentException("DepartmentId can not be less than 0");
+                    _schoolDepartmentId = value;
+
+                }
             }
 
-
+        /*--------------------------------- Organization - Individual relationship details ----------------------------------*/
 
             public OrganizationDetails()
             {
@@ -267,14 +295,14 @@ namespace SchoolManagementApplicationDAL.Model
             }
 
          
-            public virtual void displayOrganizationDetails()
+            public virtual void getOrganizationDetails()
             {
                 Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_state} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
             }
 
-            public virtual void displayAddress()
+            public virtual void getOrganizationRelationshipDetails()
             {
-                Console.WriteLine($"Org. Address : {_fullAddress} City : {_city} State : {_state} Country : {_country} Zip Code : {_zipCode} Email : {_emailId} Phone Number : {_schoolPhoneNumber} ");
+                Console.WriteLine($"Relationship Id : {_schoolRelationShipId} Relationship Category Id: {_schoolRelationShipCategoryId} Relationship Category Name : {_schoolRelationShipCategoryName} Relationship-Department Name :{_schoolDepartmentId} ");
             }
 
 

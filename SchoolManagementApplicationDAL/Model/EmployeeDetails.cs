@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
-    public class EmployeeDetails :DepartmentDetails
+    public class EmployeeDetails : DepartmentDetails
     {
         int _employeeId;
         public int EmployeeId
@@ -330,18 +330,39 @@ namespace SchoolManagementApplicationDAL.Model
 
         }
 
-        //These Child classes ought to have same access specifier for the overridden Method in the Child Classes.
-        public override void displayOrganizationDetails()
+        /*------------------------------- Organization details Methods ----------------------------------*/
+        public override void getOrganizationDetails()
         {
-            Console.WriteLine($"Employee Organiization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full address : {FullAddress} City : {City} State : {State} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
+            Console.WriteLine($"Employee Organization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full address : {FullAddress} City : {City} State : {State} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
 
         }
 
-        public override void displayAddress()
+        public override void getOrganizationRelationshipDetails()
         {
-            Console.WriteLine($"Employee Org. Address: {FullAddress} City : {City} State : {State} Country : {Country} Zip Code : {ZipCode} Email : {EmailId} Phone Number : {SchoolPhoneNumber}");
+            Console.WriteLine($"Employee Org. Relationship Relationship Id : {SchoolRelationShipId} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName}");
         }
 
+        /*------------------------------- Organization details Methods ----------------------------------*/
+
+
+
+        /*------------------------------- Department details methods ------------------------------------*/
+        public override void getDepartmentDetails(int deptId)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
+        }
+        public override void getDepartmentDetails(int deptId, string deptName)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
+        }
+
+        public override void getDepartmentDetails(string deptName, int deptId)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
+        }
+
+
+        /*------------------------------- Department details methods ------------------------------------*/
 
         /*
          

@@ -58,15 +58,42 @@ namespace SchoolManagementApplicationDAL.Model
         }
 
        
-        public override void displayOrganizationDetails()
+        
+        public override void getOrganizationDetails()
         {
             Console.WriteLine($"Department Organization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full Address : {FullAddress} City : {City} State : {State} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
 
         }
 
-        public override void displayAddress()
+        public override void getOrganizationRelationshipDetails()
         {
-            Console.WriteLine($"Department Org. Address: {FullAddress} City : {City} State : {State} Country : {Country} Zip Code : {ZipCode} Email : {EmailId} Phone Number : {SchoolPhoneNumber}");
+            Console.WriteLine($"Relationship Id : {SchoolRelationShipId} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName} ");
         }
+
+        /*Methods to fetch Department Details*/
+        
+        public virtual void getDepartmentDetails(int deptId)
+        {
+            Console.WriteLine($"Department Id : {_departmentId} Department Code : {_departmentCode} Department Name :{_departmentName}");
+        }
+        public virtual void getDepartmentDetails(int deptId, string deptName)
+        {
+            Console.WriteLine($"Department Id : {_departmentId} Department Code : {_departmentCode} Department Name :{_departmentName}");
+        }
+
+        public virtual void getDepartmentDetails(string deptName, int deptId)
+        {
+            Console.WriteLine($"Department Id : {_departmentId} Department Code : {_departmentCode} Department Name :{_departmentName}");
+        }
+
+        public decimal getDepartmentWiseExpenses(int deptId) 
+        {
+            decimal _deptExpenses = 0;
+
+            return _deptExpenses;
+        }
+
+        
+
     }
 }
