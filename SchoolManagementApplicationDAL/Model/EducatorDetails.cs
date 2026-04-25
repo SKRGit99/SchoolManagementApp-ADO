@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
-    public class EducatorDetails: SchoolDetails
+    public class EducatorDetails: OrganizationDetails
     {
         public EducatorDetails() { }
 

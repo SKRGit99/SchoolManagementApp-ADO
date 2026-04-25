@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
-    public class StudentDetails : SchoolDetails
+    public class StudentDetails : OrganizationDetails
     {
         public StudentDetails() { }
 
@@ -238,7 +238,4 @@ namespace SchoolManagementApplicationDAL.Model
 
     }
 
-  
-
-
-}
+ }
