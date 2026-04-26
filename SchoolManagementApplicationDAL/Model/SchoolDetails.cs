@@ -235,14 +235,33 @@ namespace SchoolManagementApplicationDAL.Model
         
             }
 
-            int _schoolRelationShipId;
-            public int SchoolRelationShipId
+            int _employeeRelationShipId;
+            public int EmployeeRelationShipId
             {
-                get { return (int)_schoolRelationShipId; }
-                set { _schoolRelationShipId = value; }
+                get { return (int)_employeeRelationShipId; }
+                set { _employeeRelationShipId = value; }
             }
 
-            
+            int _studentRelationShipId;
+            public int StudentRelationShipId
+            {
+                get { return (int)_studentRelationShipId; }
+                set { _studentRelationShipId = value; }
+            }
+
+
+            int _schoolDepartmentId;        //Department of the Related Individual
+            public int SchoolDepartmentId
+            {
+                get { return (int)_schoolDepartmentId; }
+                set
+                {
+                    if (value < 0) throw new ArgumentException("DepartmentId can not be less than 0");
+                    _schoolDepartmentId = value;
+
+                }
+            }
+
 
 
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
-    public class StudentDetails : OrganizationDetails
+    public class StudentDetails : DepartmentDetails
     {
         public StudentDetails() { }
 
@@ -233,6 +233,31 @@ namespace SchoolManagementApplicationDAL.Model
         }
 
 
+
+        public override void getOrganizationDetails()
+        {
+            Console.WriteLine($"Organization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full Address : {FullAddress} City : {City} State : {SchoolState} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
+        }
+
+       
+        public override void getOrganizationRelationshipDetails(int studentId, string schoolCode)
+        {
+            Console.WriteLine($"Relationship Id : {StudentRelationShipId} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName} Relationship-Department Name :{SchoolDepartmentId} ");
+        }
+
+        public override void getDepartmentDetails(int deptId)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
+        }
+        public override void getDepartmentDetails(int deptId, string deptName)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
+        }
+
+        public override void getDepartmentDetails(string deptName, int deptId)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
+        }
 
 
 

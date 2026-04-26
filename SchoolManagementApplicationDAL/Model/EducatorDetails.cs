@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
-    public class EducatorDetails: OrganizationDetails
+    public class EducatorDetails: EmployeeDetails
     {
         public EducatorDetails() { }
 
@@ -229,6 +229,33 @@ namespace SchoolManagementApplicationDAL.Model
                     throw new ArgumentNullException("Educator EmailID can not be null");
                 _educatorEmailId = value;
             }
+        }
+
+
+        public override void getOrganizationDetails()
+        {
+            Console.WriteLine($"Organization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full address : {FullAddress} City : {City} State : {SchoolState} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
+
+        }
+
+        public override void getOrganizationRelationshipDetails(string schoolCode, int empId)
+        {
+            Console.WriteLine($"Educator Id : {EmployeeRelationShipId} Department Name : {DepartmentName} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName}");
+        }
+
+       
+        public override void getDepartmentDetails(int deptId)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
+        }
+        public override void getDepartmentDetails(int deptId, string deptName)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
+        }
+
+        public override void getDepartmentDetails(string deptName, int deptId)
+        {
+            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
         }
 
 

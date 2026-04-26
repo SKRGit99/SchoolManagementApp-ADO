@@ -65,7 +65,7 @@ namespace SchoolManagementApplicationDAL.Repository
 
                     studentDet.SchoolRelationShipCategoryId = Convert.ToInt32(dr["RelationshipCategoryId"]);
                     studentDet.SchoolRelationShipCategoryName = dr["RelationshipCategoryName"].ToString();
-                    studentDet.SchoolRelationShipId = Convert.ToInt32(dr["RelationshipId"]);
+                    studentDet.StudentRelationShipId = Convert.ToInt32(dr["RelationshipId"]);
                     studentDet.SchoolName = dr["SchoolName"].ToString();
 
                     studentDet.StudentFirstName = dr["StudentFirstName"].ToString();
@@ -205,6 +205,9 @@ namespace SchoolManagementApplicationDAL.Repository
                 }
 
             }
+
+
+       
 
     }
 }

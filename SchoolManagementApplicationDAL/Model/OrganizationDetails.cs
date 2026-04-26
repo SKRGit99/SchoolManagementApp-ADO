@@ -135,11 +135,11 @@ namespace SchoolManagementApplicationDAL.Model
                 set { _city = value; }
             }
 
-            string _state = string.Empty;
-            public string State
-            {
-                get { return _state; }
-                set { _state = value; }
+            string _schoolState = string.Empty;
+            public string SchoolState
+        {
+                get { return _schoolState; }
+                set { _schoolState = value; }
             }
 
             string _country = string.Empty;
@@ -203,11 +203,18 @@ namespace SchoolManagementApplicationDAL.Model
          
          */
         
-            int _schoolRelationShipId;            
-            public int SchoolRelationShipId
+            int _employeeRelationShipId;            
+            public int EmployeeRelationShipId
             {
-                get { return (int)_schoolRelationShipId; }
-                set { _schoolRelationShipId = value; }
+                get { return (int)_employeeRelationShipId; }
+                set { _employeeRelationShipId = value; }
+            }
+
+            int _studentRelationShipId;
+            public int StudentRelationShipId
+            {
+                get { return (int)_studentRelationShipId; }
+                set { _studentRelationShipId = value; }
             }
 
             int _schoolRelationShipCategoryId;
@@ -263,7 +270,7 @@ namespace SchoolManagementApplicationDAL.Model
                 this._addressLine2 = "Danapur";
                 this._fullAddress = _addressLine1 + _addressLine2;
                 this._city = "Patna";
-                this._state = "Bihar";
+                this._schoolState = "Bihar";
                 this._country = "India";
                 this._zipCode = "800020";
                 this._emailId = "contact@skrschool.com";
@@ -284,7 +291,7 @@ namespace SchoolManagementApplicationDAL.Model
                 this._addressLine1 = addLine1;
                 this._addressLine2 = addLine2;
                 this._city = city;
-                this._state = state;
+                this._schoolState = state;
                 this._country = country;
                 this._zipCode = zipCode;
                 this._emailId = emailID;
@@ -297,16 +304,21 @@ namespace SchoolManagementApplicationDAL.Model
          
             public virtual void getOrganizationDetails()
             {
-                Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_state} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
+                Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_schoolState} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
             }
 
-            public virtual void getOrganizationRelationshipDetails()
+            public virtual void getOrganizationRelationshipDetails(string schoolCode, int empId)
             {
-                Console.WriteLine($"Relationship Id : {_schoolRelationShipId} Relationship Category Id: {_schoolRelationShipCategoryId} Relationship Category Name : {_schoolRelationShipCategoryName} Relationship-Department Name :{_schoolDepartmentId} ");
+                Console.WriteLine($"Relationship Id : {_employeeRelationShipId} Relationship Category Id: {_schoolRelationShipCategoryId} Relationship Category Name : {_schoolRelationShipCategoryName} Relationship-Department Name :{_schoolDepartmentId} ");
+            }
+
+            public virtual void getOrganizationRelationshipDetails(int studentId, string schoolCode)
+            {
+                Console.WriteLine($"Relationship Id : {_studentRelationShipId} Relationship Category Id: {_schoolRelationShipCategoryId} Relationship Category Name : {_schoolRelationShipCategoryName} Relationship-Department Name :{_schoolDepartmentId} ");
             }
 
 
 
-        }
+    }
     
 }

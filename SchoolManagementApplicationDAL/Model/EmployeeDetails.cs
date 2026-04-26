@@ -116,14 +116,6 @@ namespace SchoolManagementApplicationDAL.Model
             set { _dateOfJoining = value; }
         }
 
-        string _employeementType = string.Empty;
-        public string EmployeementType
-        {
-            get { return _employeementType; }
-            set { _employeementType = value; }
-        }
-
-
         int _employeeManagerId;
         public int EmployeeManagerId
         {
@@ -278,7 +270,7 @@ namespace SchoolManagementApplicationDAL.Model
 
             this._employeeDesignation = string.Empty;
             this.DateOfJoining = DateTime.MinValue;
-            this._employeementType = string.Empty;
+            
             this._employeeManagerId = 0;
             this._isEmployeeOnPermanentPayroll = 'Y';
             this._employeePayScale = 0;
@@ -309,7 +301,7 @@ namespace SchoolManagementApplicationDAL.Model
 
             this._employeeDesignation = empdesignation;
             this.DateOfJoining = doj;
-            this._employeementType = emptype;
+            
             this._employeeManagerId = empManagerId;
             this._isEmployeeOnPermanentPayroll = isPermPayroll;
             this._employeePayScale = empPayScale;
@@ -333,13 +325,13 @@ namespace SchoolManagementApplicationDAL.Model
         /*------------------------------- Organization details Methods ----------------------------------*/
         public override void getOrganizationDetails()
         {
-            Console.WriteLine($"Employee Organization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full address : {FullAddress} City : {City} State : {State} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
+            Console.WriteLine($"Organization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full address : {FullAddress} City : {City} State : {SchoolState} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
 
         }
 
-        public override void getOrganizationRelationshipDetails()
+        public override void getOrganizationRelationshipDetails(string schoolCode,int empId)
         {
-            Console.WriteLine($"Employee Org. Relationship Relationship Id : {SchoolRelationShipId} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName}");
+            Console.WriteLine($"Employee Id : {EmployeeRelationShipId} Department Name : {DepartmentName} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName}");
         }
 
         /*------------------------------- Organization details Methods ----------------------------------*/
