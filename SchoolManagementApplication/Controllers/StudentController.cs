@@ -78,7 +78,11 @@ namespace SchoolManagementApplication.Controllers
             return View(paginatedResult);
         }
 
-
+        public void displayOrganisationDetails()
+        {
+            StudentDetailsBAL stdDetBal = new StudentDetailsBAL();
+            stdDetBal.displayOrganisationDetails();
+        }
 
     }
 }

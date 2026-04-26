@@ -1,12 +1,14 @@
-﻿using SchoolManagementApplicationDAL.Model;
+﻿using SchoolManagementApplicationDAL.Abstract;
+using SchoolManagementApplicationDAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
-using SchoolManagementApplicationDAL.Abstract;
 
 namespace SchoolManagementApplicationDAL.Repository
 {
@@ -205,6 +207,24 @@ namespace SchoolManagementApplicationDAL.Repository
                 }
 
             }
+
+
+        public List<OrganizationDetails> getStudentOrganizationDetails()
+        {
+            List<OrganizationDetails> lstOrgDet = new List<OrganizationDetails>();
+
+            /* Implementation of Polymorphism*/
+            OrganizationDetails orgdet;
+            orgdet = new StudentDetails();
+
+            lstOrgDet = orgdet.getOrganizationDetails();
+
+            return lstOrgDet;
+
+        }
+        
+
+        
 
 
        

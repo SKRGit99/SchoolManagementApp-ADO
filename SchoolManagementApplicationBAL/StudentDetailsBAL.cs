@@ -55,7 +55,11 @@ namespace SchoolManagementApplicationBAL
         //    return lsttt;
         //}
 
-
+        public void displayOrganisationDetails()
+        {
+            StudentDetailsRepo studentDetailRepo = new StudentDetailsRepo();
+            studentDetailRepo.getStudentOrganizationDetails();
+        }
 
 
 

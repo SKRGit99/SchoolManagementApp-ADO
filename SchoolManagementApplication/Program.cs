@@ -37,6 +37,7 @@ app.MapControllerRoute(
     //pattern: "{controller=Student}/{action=GetIndividualStudentDetailsByRegistrationId}/{id?}")
     //pattern: "{controller=Educator}/{action=GetEducatorDetails}/{id?}")
     //pattern: "{controller=Student}/{action=GetIndividualStudentDetailsByRegistrationId}/{id?}")
+    //pattern: "{controller=Student}/{action=displayOrganisationDetails}/{id?}")
     .WithStaticAssets();
 
 app.Run();

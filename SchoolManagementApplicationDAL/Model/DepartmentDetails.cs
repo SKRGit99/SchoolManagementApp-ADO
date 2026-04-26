@@ -57,11 +57,13 @@ namespace SchoolManagementApplicationDAL.Model
 
         }
 
-       
-        
-        public override void getOrganizationDetails()
+
+
+        public override List<OrganizationDetails> getOrganizationDetails()
         {
-            Console.WriteLine($"Department Organization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full Address : {FullAddress} City : {City} State : {SchoolState} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
+            List<OrganizationDetails> lstOrg = new List<OrganizationDetails>();
+            return lstOrg;
+            //Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_schoolState} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
 
         }
 

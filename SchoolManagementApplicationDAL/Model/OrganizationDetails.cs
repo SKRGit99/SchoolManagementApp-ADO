@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -302,9 +303,12 @@ namespace SchoolManagementApplicationDAL.Model
             }
 
          
-            public virtual void getOrganizationDetails()
+            public virtual List<OrganizationDetails> getOrganizationDetails()
             {
-                Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_schoolState} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
+                List<OrganizationDetails> lstOrg = new List<OrganizationDetails>();
+                return lstOrg;
+                //Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_schoolState} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
+            
             }
 
             public virtual void getOrganizationRelationshipDetails(string schoolCode, int empId)
