@@ -2,7 +2,7 @@
 
 namespace SchoolManagementApplication.Controllers
 {
-    public class EducatorBaseController<T> : Controller where T : class
+    public class SuperAdminBaseController<T> : Controller where T : class 
     {
         public List<T> PaginatedResult(List<T> t, int page, int rowsPerPage)
         {
@@ -14,6 +14,10 @@ namespace SchoolManagementApplication.Controllers
             var paginatedResult = t.Skip(skip).Take(rowsPerPage).ToList();
             return paginatedResult;
         }
+
+        
+         
+        
+
     }
 }
-

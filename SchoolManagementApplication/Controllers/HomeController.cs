@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplication.Controllers
 {
-    public class HomeController : StudentBaseController<StudentDetails>
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

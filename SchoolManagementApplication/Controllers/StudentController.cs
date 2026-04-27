@@ -5,27 +5,27 @@ using SchoolManagementApplicationDAL.Model;
 
 namespace SchoolManagementApplication.Controllers
 {
-    public class StudentController : StudentBaseController<StudentDetails>
+    public class StudentController : Controller
     {
 
-        [HttpGet]
-        public IActionResult GetIndividualStudentDetailsByRegistrationId()
-        {
-            int inputStudentId = 0;
-            StudentDetailsBAL studentDetailsBusiness = new StudentDetailsBAL();
+        //[HttpGet]
+        //public IActionResult GetIndividualStudentDetailsByRegistrationId()
+        //{
+        //    int inputStudentId = 0;
+        //    StudentDetailsBAL studentDetailsBusiness = new StudentDetailsBAL();
 
-            /*This code is for getting dropdown details*/
-            List<StudentDetailsForDropDown> studentDetailsForDrpDwn = new List<StudentDetailsForDropDown>();
-            studentDetailsForDrpDwn = studentDetailsBusiness.GetStudentDetailsForDropdown(inputStudentId);
+        //    /*This code is for getting dropdown details*/
+        //    List<StudentDetailsForDropDown> studentDetailsForDrpDwn = new List<StudentDetailsForDropDown>();
+        //    studentDetailsForDrpDwn = studentDetailsBusiness.GetStudentDetailsForDropdown(inputStudentId);
 
-             ViewBag.studentList = new SelectList(studentDetailsForDrpDwn, "StudentIdForDrpDwn", "StudentFullNameForDrpDwn");
-            /*code for getting dropdown details ends*/
+        //     ViewBag.studentList = new SelectList(studentDetailsForDrpDwn, "StudentIdForDrpDwn", "StudentFullNameForDrpDwn");
+        //    /*code for getting dropdown details ends*/
 
-            return View();
-        }
+        //    return View();
+        //}
         
         
-        [HttpPost]
+        //[HttpPost]
         public JsonResult GetIndividualStudentDetailsByRegistrationId(string value)
         {
             StudentDetailsBAL studentDetailsBusiness = new StudentDetailsBAL();
@@ -39,50 +39,9 @@ namespace SchoolManagementApplication.Controllers
 
 
         
-        public IActionResult GetStudentDetails(int page = 1)
-        {
-            int _inputStudentId = 0;
+        
 
-            StudentDetailsBAL studentDetailsBusiness = new StudentDetailsBAL();
-
-            var stuDet = studentDetailsBusiness.fetchStudentDetails(_inputStudentId);
-
-            var viewModel = stuDet.Select(S => new StudentDetails
-            {
-                SchoolName = S.SchoolName,
-                StudentFirstName = S.StudentFirstName,
-                StudentMiddleName = S.StudentMiddleName,
-                StudentLastName = S.StudentLastName,
-                RollNumber = S.RollNumber,
-                StudentClass = S.StudentClass,
-                StudentSectionId = S.StudentSectionId,
-                StudentSectionName = S.StudentSectionName,
-
-                StudentCity = S.StudentCity,
-                StudentState = S.StudentState,
-                StudentCountry = S.StudentCountry
-
-
-            }).ToList();
-
-            //ViewBag.TotalRecords = stuDet.Count;
-            //ViewBag.CurrentPage = page;
-
-            //var paginatedResult = PaginatedResult(studentDetails, page, 10);
-            //return View(paginatedResult);
-
-            ViewBag.TotalRecords = viewModel.Count;
-            ViewBag.CurrentPage = page;
-
-            var paginatedResult = PaginatedResult(viewModel, page, 10);
-            return View(paginatedResult);
-        }
-
-        public void displayOrganisationDetails()
-        {
-            StudentDetailsBAL stdDetBal = new StudentDetailsBAL();
-            stdDetBal.displayOrganisationDetails();
-        }
+        
 
     }
 }

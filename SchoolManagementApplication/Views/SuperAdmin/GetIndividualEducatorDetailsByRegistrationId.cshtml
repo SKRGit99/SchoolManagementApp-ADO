@@ -1,0 +1,107 @@
+﻿@model IEnumerable<SchoolManagementApplicationDAL.Model.EducatorDetailsForDropDown>
+
+@{
+    ViewData["Title"] = "ABC International School - Educator details.";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+
+<div class="container py-5">
+    <!-- Row for label + dropdown -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-2 d-flex align-items-center justify-content-end">
+            <label for="studentList" class="fw-bold">Select a Student</label>
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownList("EducatorList", (SelectList)ViewBag.EducatorList, "-- Select Educator Name --", new { @class = "form-select form-select-lg", id = "EducatorList" })
+        </div>
+    </div>
+
+    <!-- Row for search button -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary btn-lg w-100" id="btnSubmitRegId">
+                Search
+            </button>
+        </div>
+    </div>
+
+    <!-- Results Table -->
+    <!-- Results table -->
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <table class="table table-striped table-bordered table-hover align-middle text-center" id="selectedEducatorDetailsTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th>EducatorId</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Classes Assigned</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Country</th>
+                        <th>Phone Number</th>
+                        <th>EmailId</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#btnSubmitRegId").click(function () {
+            debugger;
+            var selectedValue = $("#EducatorList").val();
+              var tbody = $('#selectedEducatorDetailsTable tbody');
+                    tbody.empty();
+            // Validate selection
+            if (!selectedValue) {
+                alert("Please select a value first.");
+                return;
+            }
+
+            // Send via AJAX
+            $.ajax({
+                url: '@Url.Action("GetIndividualEducatorDetailsByRegistrationId", "SuperAdmin")', // Controller action
+                type: 'POST',
+                data: { value: selectedValue },
+                success: function (response) {
+                       if (response.length > 0) {
+                           debugger;
+                                $.each(response, function (i, item) {
+                                    debugger;
+                                    tbody.append('<tr><td>' + item.educatorId + '</td><td>' + item.educatorName + '</td><td>' + item.educatorDepartmentName + '</td><td>' + item.educatorClassesAssigned + '</td><td>' + item.educatorAddress + '</td><td>' + item.educatorCity + '</td><td>' + item.educatorState + '</td><td>' + item.educatorCountry + '</td><td>' + item.educatorPhoneNumber + '</td><td>' + item.emailId + '</td></tr>');
+                                });
+                            } else {
+                                tbody.append('<tr><td colspan="3">No Educator found</td></tr>');
+                            }
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error: " + error);
+                    alert("Something went wrong.");
+                }
+            });
+
+
+        });
+    });
+
+</script>
+
+<div class="container py-5">
+    <div class="row align-items-center g-5">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+
+    </div>
+</div>

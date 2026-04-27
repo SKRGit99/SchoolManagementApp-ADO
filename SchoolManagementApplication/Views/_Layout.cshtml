@@ -15,9 +15,16 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
  
     <style>
-        .content-wrapper {
-            min-height: 200vh; /* ensures enough space before footer */
-            padding-bottom: 100px; /* gap before footer */
+        html, body {
+            height: 100%; /* full viewport height */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1; /* pushes footer down */
+            min-height: 600px; /* ensures footer after certain height */
         }
 
         footer {
@@ -78,7 +85,7 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
+                                       asp-controller="SuperAdmin"
                                        asp-action="GetIndividualStudentDetailsByRegistrationId">
                                         Principal's Message
                                     </a>
@@ -87,7 +94,7 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
+                                       asp-controller="SuperAdmin"
                                        asp-action="GetIndividualStudentDetailsByRegistrationId">
                                         History
                                     </a>
@@ -96,7 +103,7 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
+                                       asp-controller="SuperAdmin"
                                        asp-action="GetIndividualStudentDetailsByRegistrationId">
                                         Managing Committee
                                     </a>
@@ -105,7 +112,7 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
+                                       asp-controller="SuperAdmin"
                                        asp-action="GetIndividualStudentDetailsByRegistrationId">
                                         Fee Structure
                                     </a>
@@ -114,7 +121,7 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
+                                       asp-controller="SuperAdmin"
                                        asp-action="GetIndividualStudentDetailsByRegistrationId">
                                         Infrastructure
                                     </a>
@@ -123,7 +130,7 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="Student"
+                                       asp-controller="SuperAdmin"
                                        asp-action="GetIndividualStudentDetailsByRegistrationId">
                                         Aims and Objectives
                                     </a>
@@ -189,11 +196,11 @@
 
                             <ul class="dropdown-menu dropdown-menu-dark">
                                 <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Student" asp-action="GetStudentDetails">All Student Details</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetStudentDetails">All Student Details</a>
                                 </li>
 
                                 <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Student" asp-action="GetIndividualStudentDetailsByRegistrationId">Individual Student Details</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualStudentDetailsByRegistrationId">Individual Student Details</a>
                                 </li>
 
              
@@ -214,10 +221,10 @@
                             <ul class="dropdown-menu dropdown-menu-dark">
                                 
                               <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Educator" asp-action="GetEducatorDetails">Educator Details</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetEducatorDetails">Educator Details</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Educator" asp-action="GetIndividualEducatorDetailsByRegistrationId">Individual Educator Details</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualEducatorDetailsByRegistrationId">Individual Educator Details</a>
                                 </li>
                                 
 
@@ -266,15 +273,6 @@
         <small>&copy; 2026 SKR International School. All rights reserved.</small>
     </footer>
 
-    @* <div class="container-fluid bg-dark text-white py-2">
-        <div class="row">
-            <div class="col text-center">
-                <small>&copy; 2026 SKR International School. All rights reserved.</small>
-            </div>
-        </div>
-    </div> *@
-
-    
-
+   
     </body>
 </html>

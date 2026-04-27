@@ -11,20 +11,7 @@ namespace SchoolManagementApplicationBAL
 {
     public class StudentDetailsBAL
     {
-        IStudentDetails stdet = new StudentDetailsRepo();
-        public List<StudentDetails> fetchStudentDetails(int _inputStudentId)
-        {
-            List<StudentDetails> detStudent = new List<StudentDetails>();
-            detStudent = stdet.fetchStudentDetails(_inputStudentId);
-            return detStudent;
-        }
-
-        public List<StudentDetailsForDropDown> GetStudentDetailsForDropdown(int studentId)
-        {
-            List<StudentDetailsForDropDown> detStudentDrpDwn = new List<StudentDetailsForDropDown>();
-            detStudentDrpDwn = stdet.getStudentDetailsForDropDown(studentId);
-            return detStudentDrpDwn;
-        }
+        IStudent stdet = new StudentRepo();
 
         public List<StudentDetails> GetStudentDetailsByRegistrationId(int selectedStudentRegId)
         {
@@ -55,11 +42,7 @@ namespace SchoolManagementApplicationBAL
         //    return lsttt;
         //}
 
-        public void displayOrganisationDetails()
-        {
-            StudentDetailsRepo studentDetailRepo = new StudentDetailsRepo();
-            studentDetailRepo.getStudentOrganizationDetails();
-        }
+        
 
 
 

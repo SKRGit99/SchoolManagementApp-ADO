@@ -6,24 +6,24 @@ using SchoolManagementApplicationDAL.Model;
 
 namespace SchoolManagementApplication.Controllers
 {
-    public class EducatorController : EducatorBaseController<EducatorDetails>
+    public class EducatorController : Controller
     {
-        [HttpGet]
-        public IActionResult GetIndividualEducatorDetailsByRegistrationId()
-        {
-            int educatorid = 0;
-            EducatorDetailsBAL eduDetailsBAL = new EducatorDetailsBAL();
+        //[HttpGet]
+        //public IActionResult GetIndividualEducatorDetailsByRegistrationId()
+        //{
+        //    int educatorid = 0;
+        //    EducatorDetailsBAL eduDetailsBAL = new EducatorDetailsBAL();
 
-            /*This code is for grtting dropdown details*/
-            List<EducatorDetailsForDropDown> educatorDetDrpDwn = new List<EducatorDetailsForDropDown>();
-            educatorDetDrpDwn = eduDetailsBAL.fetchEducatorDetailsForDropDown(educatorid);
-            ViewBag.EducatorList = new SelectList(educatorDetDrpDwn, "EducatorIdForDrpDwn", "EducatorFullNameForDrpDwn");
-            /*code for grtting dropdown details ends*/
+        //    /*This code is for grtting dropdown details*/
+        //    List<EducatorDetailsForDropDown> educatorDetDrpDwn = new List<EducatorDetailsForDropDown>();
+        //    educatorDetDrpDwn = eduDetailsBAL.fetchEducatorDetailsForDropDown(educatorid);
+        //    ViewBag.EducatorList = new SelectList(educatorDetDrpDwn, "EducatorIdForDrpDwn", "EducatorFullNameForDrpDwn");
+        //    /*code for grtting dropdown details ends*/
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        [HttpPost]
+        //[HttpPost]
         public JsonResult GetIndividualEducatorDetailsByRegistrationId(string value)
         {
             EducatorDetailsBAL eduDetailsDrpDwnBAL = new EducatorDetailsBAL();
@@ -33,20 +33,7 @@ namespace SchoolManagementApplication.Controllers
 
             return Json(educatDetails);
         }
-        public IActionResult GetEducatorDetails(int page = 1)
-        {
-            int educatorId = 0;
-            EducatorDetailsBAL educatorDetailsBusiness = new EducatorDetailsBAL();
-
-            var educatorDetails = educatorDetailsBusiness.fetchEducatorDetails(educatorId);
-
-            ViewBag.TotalRecords = educatorDetails.Count;
-            ViewBag.CurrentPage = page;
-
-            var paginatedResult = PaginatedResult(educatorDetails, page, 10);
-            return View(paginatedResult);
-
-        }
+        
 
 
 

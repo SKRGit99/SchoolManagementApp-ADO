@@ -63,13 +63,13 @@ namespace SchoolManagementApplicationDAL.Model
 
         }
 
-        string _educatorFullName = string.Empty;
-        public string EducatorFullName
+        string _educatorName = string.Empty;
+        public string EducatorName
         {
-            get { return _educatorFullName; }
+            get { return _educatorName; }
             set
             {
-                _educatorFullName = value;
+                _educatorName = value;
             }
         }
 
@@ -166,13 +166,13 @@ namespace SchoolManagementApplicationDAL.Model
             set { _educatorAddressLine2 = value; }
         }
 
-        string _educatorFullAddress = string.Empty;
-        public string EducatorFullAddress
+        string _educatorAddress = string.Empty;
+        public string EducatorAddress
         {
-            get { return _educatorFullAddress; }
+            get { return _educatorAddress; }
             set
             {
-                _educatorFullAddress = value;
+                _educatorAddress = value;
             }
         }
 
