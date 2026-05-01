@@ -9,6 +9,24 @@ using SchoolManagementApplicationDAL.Repository;
 
 namespace SchoolManagementApplicationBAL
 {
+    /*
+      SuperAdminRepo : StudentRepo
+
+      StudentRepo : DepartmentRepo
+
+      StudentDetails : DepartmentDetails
+
+      EducatorDetails : EmployeeDetails
+
+      EmployeeDetails : DepartmentDetails
+
+      DepartmentRepo : DepartmentDetails
+
+      DepartmentDetails : OrganizationRepo
+
+      OrganizationRepo : OrganizationDetails
+
+  */
     public class StudentDetailsBAL
     {
         IStudent stdet = new StudentRepo();

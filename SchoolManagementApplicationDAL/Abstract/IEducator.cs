@@ -16,7 +16,7 @@ namespace SchoolManagementApplicationDAL.Abstract
 
          */
 
-        List<OrganizationDetails> getOrganizationDetails();
+        OrganizationDetails getOrganizationDetails();
         List<EducatorDetails> getEducatorDetailsByRegistrationId(int educatorId);
 
         List<StudentDetails> fetchStudentDetails(int studentId);

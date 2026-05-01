@@ -10,37 +10,72 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Repository
 {
-    public class SuperAdminRepo : ISuperAdmin
+    /*
+      SuperAdminRepo : StudentRepo
+
+      StudentRepo : DepartmentRepo
+
+      DepartmentRepo : OrganizationRepo
+
+
+      DepartmentDetails : OrganizationRepo
+
+      OrganizationRepo : OrganizationDetails
+
+
+      Model Classes:
+
+      StudentDetails : DepartmentDetails
+
+      EducatorDetails : EmployeeDetails
+
+      EmployeeDetails : DepartmentDetails
+     
+    */
+    public class SuperAdminRepo : StudentRepo, ISuperAdmin     
     {
+        
         private readonly string _connString = "Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;";
 
+        public SuperAdminRepo()
+        { 
+        
+        }
+
         /*------------------------------------------ Organization Data ------------------------------------------*/
-        public List<OrganizationDetails> getOrganizationDetails()
-        {  
-            List<OrganizationDetails> orgDet = new List<OrganizationDetails>();
-
-
-            return orgDet; 
-        
-        
-        }
-
-
-        /*--------------------------------------------- Organization Data ----------------------------------------*/
-
-
-
-
-        /*------------------------------------------- Department Data---------------------------------------------*/
-        public List<DepartmentDetails> getDepartmentDetails(int deptId)
+        public override OrganizationDetails getOrganizationDetails()
         {
-            List<DepartmentDetails> depDet = new List<DepartmentDetails>();
+            OrganizationDetails lstOrg = new OrganizationDetails();
 
-
-            return depDet;
-
+            return lstOrg;
 
         }
+
+        public override void getOrganizationRelationshipDetails(int empId)
+        {
+            OrganizationDetails orgEmpDet = new OrganizationDetails();
+            Console.WriteLine($"Relationship Id : {orgEmpDet.EmployeeRelationShipId} Relationship Category Id: {orgEmpDet.SchoolRelationShipCategoryId} Relationship Category Name : {orgEmpDet.SchoolRelationShipCategoryName} Relationship-Department Name :{orgEmpDet.SchoolDepartmentId} ");
+        }
+
+        public override void getOrganizationRelationshipDetails(int studentId, int? stuRollNum)
+        {
+            OrganizationDetails orgStuDet = new OrganizationDetails();
+            Console.WriteLine($"Relationship Id : {orgStuDet.StudentRelationShipId} Relationship Category Id: {orgStuDet.SchoolRelationShipCategoryId} Relationship Category Name : {orgStuDet.SchoolRelationShipCategoryName} Relationship-Department Name :{orgStuDet.SchoolDepartmentId} ");
+        }
+
+
+        
+        public override void getDepartmentDetails(int empId)
+        {
+            DepartmentDetails deptEmpDet = new DepartmentDetails();
+            Console.WriteLine($"Department Id : {deptEmpDet.DepartmentId} Department Name :{deptEmpDet.DepartmentName}");
+        }
+        public override void getDepartmentDetails(int studentId, int? stuRollNum)
+        {
+            DepartmentDetails deptStuDet = new DepartmentDetails();
+            Console.WriteLine($"Department Id : {deptStuDet.DepartmentId} Department Name :{deptStuDet.DepartmentName}");
+        }
+
 
         public decimal getDepartmentWiseExpenditureDetails(int deptId)
         {
@@ -53,10 +88,7 @@ namespace SchoolManagementApplicationDAL.Repository
         }
 
 
-        /*----------------------------------------- Department Data ---------------------------------------------*/
-
-
-        /*---------------------------------------------- Can Access Employee Data -----------------------------------------------*/
+        
         public List<EmployeeDetails> getEmployeeDetails()
         {
             List<EmployeeDetails> empDet = new List<EmployeeDetails>();
@@ -200,14 +232,14 @@ namespace SchoolManagementApplicationDAL.Repository
         }
 
 
-        public decimal getEmployeeSalaryDetails()
+        public List<EmployeeDetails> getEmployeeSalaryDetails()
         {
-            decimal empSalary = 0;
+            List<EmployeeDetails> empSalDet = new List<EmployeeDetails>();
 
 
 
 
-            return empSalary;
+            return empSalDet;
         }
 
         public decimal getIndividualEmployeeSalaryDetails(int empId)
@@ -313,7 +345,7 @@ namespace SchoolManagementApplicationDAL.Repository
             }
         }
 
-        public List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId)
+        public override List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId)
         {
             List<StudentDetails> lstStdDetailsbyRegId = new List<StudentDetails>();
 

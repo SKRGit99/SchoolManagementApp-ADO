@@ -13,19 +13,21 @@ namespace SchoolManagementApplicationDAL.Abstract
          
          
          */
-        List<OrganizationDetails> getOrganizationDetails();
-        List<DepartmentDetails> getDepartmentDetails(int deptId);
+        OrganizationDetails getOrganizationDetails();
+        void getOrganizationRelationshipDetails(int empId);
+        void getOrganizationRelationshipDetails(int studentId, int? stuRollNum);
+        void getDepartmentDetails(int empId);
+        void getDepartmentDetails(int studentId, int? stuRollNum);
         decimal getDepartmentWiseExpenditureDetails(int deptId);
         List<EmployeeDetails> getEmployeeDetails();
         List<EducatorDetails> fetchEducatorDetails(int educatorid);
         List<EducatorDetailsForDropDown> getEducatorDetailsForDropDown(int educatorId);
         List<EducatorDetails> getEducatorDetailsByRegistrationId(int educatorId);
-        public decimal getEmployeeSalaryDetails();
+        List<EmployeeDetails> getEmployeeSalaryDetails();
         decimal getIndividualEmployeeSalaryDetails(int empId);
-
-        public List<StudentDetails> fetchStudentDetails(int studentId);
-        public List<StudentDetailsForDropDown> getStudentDetailsForDropDown(int studentId);
-        public List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId);
+        List<StudentDetails> fetchStudentDetails(int studentId);
+        List<StudentDetailsForDropDown> getStudentDetailsForDropDown(int studentId);
+        List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId);
 
 
     }

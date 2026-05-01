@@ -7,10 +7,25 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
+    /*
+       SuperAdminRepo : StudentRepo
+
+       StudentRepo : DepartmentRepo
+
+
+
+       StudentDetails : DepartmentDetails
+
+       EducatorDetails : EmployeeDetails
+
+       EmployeeDetails : DepartmentDetails
+
+       DepartmentDetails : OrganizationDetails
+
+   */
     public class EducatorDetails: EmployeeDetails
     {
-        public EducatorDetails() { }
-
+        
         int _educatorId;
         public int EducatorId
         {
@@ -231,33 +246,59 @@ namespace SchoolManagementApplicationDAL.Model
             }
         }
 
-
-        public override List<OrganizationDetails> getOrganizationDetails()
+        public EducatorDetails() 
         {
-            List<OrganizationDetails> lstOrg = new List<OrganizationDetails>();
-            return lstOrg;
-            //Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_schoolState} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
-
+            this.EducatorId = 1;
+            this.EducatorFirstName = "Kaushal";
+            this.EducatorMiddleName = "";
+            this.EducatorLastName = "Kumar";
+            this.EducatorName = EducatorFirstName + EducatorMiddleName + EducatorLastName;
+            this.EducatorDepartmentId = 1;
+            this.EducatorDepartmentName = "Maths";
+            this.EducatorClassesAssigned = "10,11,12";
+            this.IsEducatorOnPermanentPayroll = 'Y';
+            this.EducatorPayScale = 9;
+            this.EducatorBaseSalary = Convert.ToDecimal(100000.00);
+            this.EducatorPhoneNumber = "8709620330";
+            this.EducatorAddressLine1 = "Jinpura";
+            this.EducatorAddressLine2 = "Arwal, Patna";
+            this.EducatorAddress = EducatorAddressLine1 + EducatorAddressLine2;
+            this.EducatorCity = "Patna";
+            this.EducatorState = "Bihar";
+            this.EducatorCountry = "India";
+            this.EducatorZipCode = "800040";
+            this.EducatorEmailId = "kaushal@skr91.com";
+        
         }
 
-        public override void getOrganizationRelationshipDetails(string schoolCode, int empId)
+        public EducatorDetails(int eduId, string eduFName, string eduMName, string eduLName, int eduDeptId,string eduDeptName, string eduClsAssigend, char isEduPermPayroll, int eduPayScale, decimal eduBaseSalary, string eduPhoneNum, string eduAddLine1, string eduAddLine2, string eduCity, 
+                                string eduState, string eduCountry, string eduZipCode, string eduEailId, int employeeId, string employeeFName, string employeeMName, string employeeLName, DateTime dob, string gen, int empdeptId, string empdesignation, DateTime doj, string emptype, int empManagerId, char isPermPayroll,
+                                int empPayScale, decimal empBaseSal, string empQual, int empExpWork, string empPhoneNum, string empAddLine1, string empAddLine2, string empCity, string empState, string empCountry, string empZipCode, string empEmailId, int deptId, string deptCode, string deptName, string schCode, string schName,
+                                string schRegNum, DateTime estYear, string affBoard, string motto, string vision, string schDesc, string addLine1, 
+                                string addLine2, string city, string state, string country, string zipCode, string emailID, 
+                                string schURL, string schPhoneNum) : base (employeeId, employeeFName, employeeMName, employeeLName, dob, gen, empdeptId, empdesignation, doj, emptype, empManagerId, isPermPayroll, empPayScale, empBaseSal, empQual, empExpWork, empPhoneNum, empAddLine1, empAddLine2, empCity, empState, empCountry, empZipCode, empEmailId, deptId, deptCode, deptName, schCode, schName, schRegNum, estYear, affBoard, motto, vision, schDesc, addLine1, addLine2, city, state, country, zipCode, emailID, schURL, schPhoneNum)
         {
-            Console.WriteLine($"Educator Id : {EmployeeRelationShipId} Department Name : {DepartmentName} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName}");
-        }
+            this.EducatorId = eduId;
+            this.EducatorFirstName = eduFName;
+            this.EducatorMiddleName = eduMName;
+            this.EducatorLastName = eduLName;
+            this.EducatorName = eduFName + eduMName + eduLName;
+            this.EducatorDepartmentId = eduDeptId;
+            this.EducatorDepartmentName = eduDeptName;
+            this.EducatorClassesAssigned = eduClsAssigend;
+            this.IsEducatorOnPermanentPayroll = isEduPermPayroll;
+            this.EducatorPayScale = eduPayScale;
+            this.EducatorBaseSalary = eduBaseSalary;
+            this.EducatorPhoneNumber = eduPhoneNum;
+            this.EducatorAddressLine1 = eduAddLine1;
+            this.EducatorAddressLine2 = eduAddLine2;
+            this.EducatorAddress = eduAddLine1 + eduAddLine2;
+            this.EducatorCity = eduCity;
+            this.EducatorState = eduState;
+            this.EducatorCountry = eduCountry;
+            this.EducatorZipCode = eduZipCode;
+            this.EducatorEmailId = eduEailId;
 
-       
-        public override void getDepartmentDetails(int deptId)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
-        }
-        public override void getDepartmentDetails(int deptId, string deptName)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
-        }
-
-        public override void getDepartmentDetails(string deptName, int deptId)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagementApplicationDAL.Repository;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
@@ -8,8 +9,24 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
+    /*
+       SuperAdminRepo : StudentRepo
+
+       StudentRepo : DepartmentRepo
+
+
+
+       StudentDetails : DepartmentDetails
+
+       EducatorDetails : EmployeeDetails
+
+       EmployeeDetails : DepartmentDetails
+
+       DepartmentDetails : OrganizationDetails
+
+   */
     public class DepartmentDetails : OrganizationDetails
-    {
+    {   
         int _departmentId;
 
         public int DepartmentId
@@ -49,7 +66,11 @@ namespace SchoolManagementApplicationDAL.Model
             this._departmentName = "Mathematics";
 
         }
-        public DepartmentDetails(int deptId, string deptCode, string deptName, string schCode, string schName, string schRegNum, DateTime estYear, string affBoard, string motto, string vision, string schDesc, string addLine1, string addLine2, string city, string state, string country, string zipCode, string emailID, string schURL, string schPhoneNum) : base( schCode, schName, schRegNum, estYear, affBoard, motto, vision, schDesc, addLine1, addLine2, city, state, country, zipCode, emailID, schURL, schPhoneNum)
+        public DepartmentDetails(int deptId, string deptCode, string deptName, string schCode, string schName, string schRegNum, 
+                                 DateTime estYear, string affBoard, string motto, string vision, string schDesc, string addLine1, string addLine2, 
+                                 string city, string state, string country, string zipCode, string emailID, 
+                                 string schURL, string schPhoneNum) : base( schCode, schName, schRegNum, estYear, affBoard, motto, vision, schDesc, 
+                                 addLine1, addLine2, city, state, country, zipCode, emailID, schURL, schPhoneNum)
         {
             this._departmentId = deptId;
             this._departmentCode = deptCode;
@@ -59,46 +80,12 @@ namespace SchoolManagementApplicationDAL.Model
 
 
 
-        public override List<OrganizationDetails> getOrganizationDetails()
-        {
-            List<OrganizationDetails> lstOrg = new List<OrganizationDetails>();
-            return lstOrg;
-            //Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_schoolState} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
+        
 
-        }
+        
 
-        public override void getOrganizationRelationshipDetails(string schoolCode, int empId)
-        {
-            Console.WriteLine($"Relationship Id : {EmployeeRelationShipId} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName} ");
-        }
-
-        public override void getOrganizationRelationshipDetails(int studentId, string schoolCode)
-        {
-            Console.WriteLine($"Relationship Id : {StudentRelationShipId} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName} ");
-        }
-
-        /*Methods to fetch Department Details*/
-
-        public virtual void getDepartmentDetails(int deptId)
-        {
-            Console.WriteLine($"Department Id : {_departmentId} Department Code : {_departmentCode} Department Name :{_departmentName}");
-        }
-        public virtual void getDepartmentDetails(int deptId, string deptName)
-        {
-            Console.WriteLine($"Department Id : {_departmentId} Department Code : {_departmentCode} Department Name :{_departmentName}");
-        }
-
-        public virtual void getDepartmentDetails(string deptName, int deptId)
-        {
-            Console.WriteLine($"Department Id : {_departmentId} Department Code : {_departmentCode} Department Name :{_departmentName}");
-        }
-
-        public decimal getDepartmentWiseExpenses(int deptId) 
-        {
-            decimal _deptExpenses = 0;
-
-            return _deptExpenses;
-        }
+      
+        
 
         
 

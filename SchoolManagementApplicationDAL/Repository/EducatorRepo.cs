@@ -10,19 +10,37 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Repository
 {
-    public class EducatorRepo: IEducator,IStudent
+    public class EducatorRepo: EmployeeRepo,IEducator,IStudent
     {
         private readonly string _connString = "Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;";
 
-        public List<OrganizationDetails> getOrganizationDetails()
+        public override OrganizationDetails getOrganizationDetails()
         {
-            List<OrganizationDetails> orgDet = new List<OrganizationDetails>();
+            OrganizationDetails lstOrg = new OrganizationDetails();
 
-
-            return orgDet;
-
+            return lstOrg;
 
         }
+
+        public override void getOrganizationRelationshipDetails(int empId)
+        {
+            OrganizationDetails orgEmpDet = new OrganizationDetails();
+            Console.WriteLine($"Relationship Id : {orgEmpDet.EmployeeRelationShipId} Relationship Category Id: {orgEmpDet.SchoolRelationShipCategoryId} Relationship Category Name : {orgEmpDet.SchoolRelationShipCategoryName} Relationship-Department Name :{orgEmpDet.SchoolDepartmentId} ");
+        }
+
+        public override void getOrganizationRelationshipDetails(int studentId, int? stuRollNum)
+        {
+            OrganizationDetails orgStuDet = new OrganizationDetails();
+            Console.WriteLine($"Relationship Id : {orgStuDet.StudentRelationShipId} Relationship Category Id: {orgStuDet.SchoolRelationShipCategoryId} Relationship Category Name : {orgStuDet.SchoolRelationShipCategoryName} Relationship-Department Name :{orgStuDet.SchoolDepartmentId} ");
+        }
+
+
+        public override void getDepartmentDetails(int studentId, int? stuRollNum)
+        {
+            DepartmentDetails deptStuDet = new DepartmentDetails();
+            Console.WriteLine($"Department Id : {deptStuDet.DepartmentId} Department Name :{deptStuDet.DepartmentName}");
+        }
+
         public List<EducatorDetails> getEducatorDetailsByRegistrationId(int educatorId)
         {
             List<EducatorDetails> lstEduDetailsbyRegId = new List<EducatorDetails>();

@@ -12,25 +12,66 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Repository
 {
+    /*
+      SuperAdminRepo : StudentRepo
 
-    public class StudentRepo : IStudent
+      StudentRepo : DepartmentRepo
+
+      DepartmentRepo : OrganizationRepo
+
+
+      DepartmentDetails : OrganizationRepo
+
+      OrganizationRepo : OrganizationDetails
+
+
+      Model Classes:
+
+      StudentDetails : DepartmentDetails
+
+      EducatorDetails : EmployeeDetails
+
+      EmployeeDetails : DepartmentDetails
+
+
+     public class StudentRepo : IStudent, DepartmentRepo -- This will throw error.Base Class should come before any Interface.
+  */
+
+    public class StudentRepo : DepartmentRepo, IStudent
     {
         //SqlConnection conObj = new SqlConnection("Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;");
 
         private readonly string _connString = "Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;";
 
-        public List<OrganizationDetails> getOrganizationDetails()
+        public StudentRepo()
         {
-            List<OrganizationDetails> orgDet = new List<OrganizationDetails>();
-
-
-            return orgDet;
-
 
         }
 
+        public override OrganizationDetails getOrganizationDetails()
+        {
+            OrganizationDetails lstOrg = new OrganizationDetails();
 
-        public List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId)
+            return lstOrg;
+
+        }
+
+        public override void getOrganizationRelationshipDetails(int studentId, int? stuRollNum)
+        {
+            OrganizationDetails orgStuDet = new OrganizationDetails();
+            Console.WriteLine($"Relationship Id : {orgStuDet.StudentRelationShipId} Relationship Category Id: {orgStuDet.SchoolRelationShipCategoryId} Relationship Category Name : {orgStuDet.SchoolRelationShipCategoryName} Relationship-Department Name :{orgStuDet.SchoolDepartmentId} ");
+        }
+
+       
+        public override void getDepartmentDetails(int studentId, int? stuRollNum)
+        {
+            DepartmentDetails deptStDet = new DepartmentDetails();
+            Console.WriteLine($"Department Id : {deptStDet.DepartmentId} Department Name :{deptStDet.DepartmentName}");
+        }
+
+
+
+        public virtual List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId)
         {
             List<StudentDetails> lstStdDetailsbyRegId = new List<StudentDetails>();
 

@@ -9,6 +9,24 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationBAL
 {
+    /*
+      SuperAdminRepo : StudentRepo
+
+      StudentRepo : DepartmentRepo
+
+      StudentDetails : DepartmentDetails
+
+      EducatorDetails : EmployeeDetails
+
+      EmployeeDetails : DepartmentDetails
+
+      DepartmentRepo : DepartmentDetails
+
+      DepartmentDetails : OrganizationRepo
+
+      OrganizationRepo : OrganizationDetails
+
+  */
     public class EducatorDetailsBAL
     {
         IEducator edudet = new EducatorRepo();

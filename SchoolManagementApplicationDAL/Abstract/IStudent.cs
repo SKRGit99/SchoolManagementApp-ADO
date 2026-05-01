@@ -13,7 +13,9 @@ namespace SchoolManagementApplicationDAL.Abstract
          
          
          */
-        List<OrganizationDetails> getOrganizationDetails();
+        OrganizationDetails getOrganizationDetails();
+        void getOrganizationRelationshipDetails(int studentId, int? stuRollNum);
+        void getDepartmentDetails(int studentId, int? stuRollNum);
         List<StudentDetails> getStudentDetailsByRegistrationId(int registrationId);
 
 

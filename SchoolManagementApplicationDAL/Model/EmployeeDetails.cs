@@ -8,6 +8,22 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
+    /*
+       SuperAdminRepo : StudentRepo
+
+       StudentRepo : DepartmentRepo
+
+
+
+       StudentDetails : DepartmentDetails
+
+       EducatorDetails : EmployeeDetails
+
+       EmployeeDetails : DepartmentDetails
+
+       DepartmentDetails : OrganizationDetails
+
+   */
     public class EmployeeDetails : DepartmentDetails
     {
         int _employeeId;
@@ -288,7 +304,11 @@ namespace SchoolManagementApplicationDAL.Model
             this._employeeEmailId = string.Empty;
         }
 
-        public EmployeeDetails(int employeeId, string employeeFName, string employeeMName, string employeeLName, DateTime dob, string gen, int empdeptId, string empdesignation, DateTime doj, string emptype, int empManagerId, char isPermPayroll, int empPayScale, decimal empBaseSal, string empQual, int empExpWork, string empPhoneNum, string empAddLine1, string empAddLine2, string empCity, string empState, string empCountry, string empZipCode, string empEmailId, int deptId, string deptCode, string deptName, string schCode, string schName, string schRegNum, DateTime estYear, string affBoard, string motto, string vision, string schDesc, string addLine1, string addLine2, string city, string state, string country, string zipCode, string emailID, string schURL, string schPhoneNum) : base(deptId, deptCode, deptName, schCode, schName, schRegNum, estYear, affBoard, motto, vision, schDesc, addLine1, addLine2, city, state, country, zipCode, emailID, schURL, schPhoneNum)
+        public EmployeeDetails(int employeeId, string employeeFName, string employeeMName, string employeeLName, DateTime dob, string gen, int empdeptId, string empdesignation, DateTime doj, string emptype, int empManagerId, 
+                               char isPermPayroll, int empPayScale, decimal empBaseSal, string empQual, int empExpWork, string empPhoneNum, string empAddLine1, string empAddLine2, string empCity, string empState, string empCountry, 
+                               string empZipCode, string empEmailId, int deptId, string deptCode, string deptName, string schCode, string schName, string schRegNum, DateTime estYear, string affBoard, string motto, string vision, 
+                               string schDesc, string addLine1, string addLine2, string city, string state, string country, string zipCode, string emailID, 
+                               string schURL, string schPhoneNum) : base(deptId, deptCode, deptName, schCode, schName, schRegNum, estYear, affBoard, motto, vision, schDesc, addLine1, addLine2, city, state, country, zipCode, emailID, schURL, schPhoneNum)
         {
             this._employeeId = employeeId;
             this._employeeFirstName = employeeFName;
@@ -322,72 +342,6 @@ namespace SchoolManagementApplicationDAL.Model
 
         }
 
-        /*------------------------------- Organization details Methods ----------------------------------*/
-        public override List<OrganizationDetails> getOrganizationDetails()
-        {
-            List<OrganizationDetails> lstOrg = new List<OrganizationDetails>();
-            return lstOrg;
-            //Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_schoolState} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
-
-        }
-
-        public override void getOrganizationRelationshipDetails(string schoolCode,int empId)
-        {
-            Console.WriteLine($"Employee Id : {EmployeeRelationShipId} Department Name : {DepartmentName} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName}");
-        }
-
-        /*------------------------------- Organization details Methods ----------------------------------*/
-
-
-
-        /*------------------------------- Department details methods ------------------------------------*/
-        public override void getDepartmentDetails(int deptId)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
-        }
-        public override void getDepartmentDetails(int deptId, string deptName)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
-        }
-
-        public override void getDepartmentDetails(string deptName, int deptId)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
-        }
-
-
-        /*------------------------------- Department details methods ------------------------------------*/
-
-        /*
-         
-          static void Main(string[] args)
-            {       
-                
-                EmployeeDetails details = new EmployeeDetails(1, "Anupam","","Kumari", DateTime.Parse("1996-01-10"),"F",2,"Director", DateTime.Parse("2018-04-18"),"Admin",2,'Y',9,100000,"Graduate",10,"8123414499","Khagaria","Bihar","Khagaria","Bihar","India","852161","aupam@skrintlschool.com", 2, "PHY", "Physics", 20, "SKRPAT02", "SKR International School Patna", "SKRPATICSE", DateTime.Parse("2018-04-18"), "CBSE", "Education for All", "Education for India", "ICSE Affiliated School with AI Labs", "Vitthal VR Complex", "Saguna More Danapur", "Patna", "Bihar", "India", "800040", "info@skrschool.com", "www.skrschool.org", "8123414499");
-
-                OrganizationDetails orgDet;        
-                orgDet = new DepartmentDetails();  
-                orgDet.displayOrganizationDetails();
-                orgDet.displayAddress();
-
-                orgDet = new EmployeeDetails();
-                orgDet.displayOrganizationDetails();
-                orgDet.displayAddress();
-
-
-                orgDet = new OrganizationDetails();
-                orgDet.displayOrganizationDetails();
-                orgDet.displayAddress();
-
-                Console.ReadKey();
-            }
-         
-         
-         
-         
-         
-         
-         
-         */
+        
     }
 }

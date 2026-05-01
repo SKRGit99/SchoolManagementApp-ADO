@@ -7,6 +7,22 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
+    /*
+       SuperAdminRepo : StudentRepo
+
+       StudentRepo : DepartmentRepo
+
+
+
+       StudentDetails : DepartmentDetails
+
+       EducatorDetails : EmployeeDetails
+
+       EmployeeDetails : DepartmentDetails
+
+       DepartmentDetails : OrganizationDetails
+
+   */
     public class OrganizationDetails
     {
         /*------------------------------------------ Organization details ---------------------------------------------*/
@@ -138,7 +154,7 @@ namespace SchoolManagementApplicationDAL.Model
 
             string _schoolState = string.Empty;
             public string SchoolState
-        {
+            {
                 get { return _schoolState; }
                 set { _schoolState = value; }
             }
@@ -257,69 +273,55 @@ namespace SchoolManagementApplicationDAL.Model
 
             public OrganizationDetails()
             {
-                this._schoolCode = "SKRPAT01";
-                this._schoolName = "SKR International School";
-                this._establishmentYear = DateTime.Parse("2018-03-18");
+                this.SchoolCode = "SKRPAT01";
+                this.SchoolName = "SKR International School";
+                this.EstablishmentYear = DateTime.Parse("2018-03-18");
                 this.IsSchoolRegistered = 'Y';
-                this._registrationNumber = "SKRPATCBSE";
+                this.RegistrationNumber = "SKRPATCBSE";
                 this.IsSchoolAffiliated = 'Y';
-                this._affiliationBoard = "CBSE";
-                this._motto = "Education for everyone";
-                this._vision = "Education for Bihar";
-                this._description = "CBSE Affiliated School with AI Labs";
-                this._addressLine1 = "Saguna More";
-                this._addressLine2 = "Danapur";
-                this._fullAddress = _addressLine1 + _addressLine2;
-                this._city = "Patna";
-                this._schoolState = "Bihar";
-                this._country = "India";
-                this._zipCode = "800020";
-                this._emailId = "contact@skrschool.com";
-                this._websiteURL = "www.skrschool.com";
-                this._schoolPhoneNumber = "8123414488";
+                this.AffiliationBoard = "CBSE";
+                this.Motto = "Education for everyone";
+                this.Vision = "Education for Bihar";
+                this.Description = "CBSE Affiliated School with AI Labs";
+                this.AddressLine1 = "Saguna More";
+                this.AddressLine2 = "Danapur";
+                this.FullAddress = _addressLine1 + _addressLine2;
+                this.City = "Patna";
+                this.SchoolState = "Bihar";
+                this.Country = "India";
+                this.ZipCode = "800020";
+                this.EmailId = "contact@skrschool.com";
+                this.WebsiteURL = "www.skrschool.com";
+                this.SchoolPhoneNumber = "8123414488";
 
             }
-            public OrganizationDetails(string schCode, string schName, string schRegNum, DateTime estYear, string affBoard, string motto, string vision, string schDesc, string addLine1, string addLine2, string city, string state, string country, string zipCode, string emailID, string schURL, string schPhoneNum)
+            public OrganizationDetails(string schCode, string schName, string schRegNum, DateTime estYear, string affBoard, string motto, 
+                                       string vision, string schDesc, string addLine1, string addLine2, string city, string state, string country, 
+                                       string zipCode, string emailID, string schURL, string schPhoneNum)
             {
-                this._schoolCode = schCode;
-                this._schoolName = schName;
-                this._registrationNumber = schRegNum;
-                this._establishmentYear = estYear;
-                this._affiliationBoard = affBoard;
-                this._motto = motto;
-                this._vision = vision;
-                this._description = schDesc;
-                this._addressLine1 = addLine1;
-                this._addressLine2 = addLine2;
-                this._city = city;
-                this._schoolState = state;
-                this._country = country;
-                this._zipCode = zipCode;
-                this._emailId = emailID;
-                this._websiteURL = schURL;
-                this._schoolPhoneNumber = schPhoneNum;
+                this.SchoolCode = schCode;
+                this.SchoolName = schName;
+                this.RegistrationNumber = schRegNum;
+                this.EstablishmentYear = estYear;
+                this.AffiliationBoard = affBoard;
+                this.Motto = motto;
+                this.Vision = vision;
+                this.Description = schDesc;
+                this.AddressLine1 = addLine1;
+                this.AddressLine2 = addLine2;
+                this.City = city;
+                this.SchoolState = state;
+                this.Country = country;
+                this.ZipCode = zipCode;
+                this.EmailId = emailID;
+                this.WebsiteURL = schURL;
+                this.SchoolPhoneNumber = schPhoneNum;
 
 
             }
 
          
-            public virtual List<OrganizationDetails> getOrganizationDetails()
-            {
-                List<OrganizationDetails> lstOrg = new List<OrganizationDetails>();
-                return lstOrg;
-                //Console.WriteLine($"Organization details: School Code : {_schoolCode} School Name : {_schoolName} Registration Number : {_registrationNumber} Establishment Year : {_establishmentYear} Affiliation Board : {_affiliationBoard} Motto : {_motto} Vision : {_vision} Description : {_description} AddressLine1 : {_addressLine1} AddressLine2 : {_addressLine2} Full Address : {_fullAddress} City : {_city} State : {_schoolState} Country : {_country} ZipCode : {_zipCode} EmailId : {_emailId} Website URL : {_websiteURL} Phone Number : {_schoolPhoneNumber}");
             
-            }
-
-            public virtual void getOrganizationRelationshipDetails(string schoolCode, int empId)
-            {
-                Console.WriteLine($"Relationship Id : {_employeeRelationShipId} Relationship Category Id: {_schoolRelationShipCategoryId} Relationship Category Name : {_schoolRelationShipCategoryName} Relationship-Department Name :{_schoolDepartmentId} ");
-            }
-
-            public virtual void getOrganizationRelationshipDetails(int studentId, string schoolCode)
-            {
-                Console.WriteLine($"Relationship Id : {_studentRelationShipId} Relationship Category Id: {_schoolRelationShipCategoryId} Relationship Category Name : {_schoolRelationShipCategoryName} Relationship-Department Name :{_schoolDepartmentId} ");
-            }
 
 
 

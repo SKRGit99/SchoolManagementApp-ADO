@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagementApplicationDAL.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,267 +7,315 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
+    /* SuperAdminRepo : StudentRepo
+
+       StudentRepo : DepartmentRepo
+
+
+
+       StudentDetails : DepartmentDetails
+
+       EducatorDetails : EmployeeDetails
+
+       EmployeeDetails : DepartmentDetails
+
+       DepartmentDetails : OrganizationDetails
+
+    */
     public class SchoolDetails
     {
-            public SchoolDetails() { }
-
-            string _schoolCode = string.Empty;
-            protected string SchoolCode
+        string _schoolCode = string.Empty;
+        protected string SchoolCode
+        {
+            get { return _schoolCode; }
+            set
             {
-                get { return _schoolCode; }
-                set
-                {
-                    if (value == null)
-                        throw new ArgumentNullException("School Code can not be null.");
-                    _schoolCode = value;
-                }
+                if (value == null)
+                    throw new ArgumentNullException("School Code can not be null.");
+                _schoolCode = value;
             }
+        }
 
-            string _schoolName = string.Empty;
-            public string SchoolName
+        string _schoolName = string.Empty;
+        public string SchoolName
+        {
+            get { return _schoolName; }
+            set
             {
-                get { return _schoolName; }
-                set
-                {
-                    if (value == null)
-                        throw new ArgumentNullException("School Name can not be null.");
-                    _schoolName = value;
-                }
+                if (value == null)
+                    throw new ArgumentNullException("School Name can not be null.");
+                _schoolName = value;
             }
+        }
 
-            DateTime _establishmentYear;
-            public DateTime EstablishmentYear
+
+        DateTime _establishmentYear = DateTime.MinValue;
+        public DateTime EstablishmentYear
+        {
+            get { return _establishmentYear; }
+            set { _establishmentYear = value; }
+        }
+
+        char _isSchoolRegistered;
+        protected char IsSchoolRegistered
+        {
+            get { return _isSchoolRegistered; }
+            set
             {
-                get { return _establishmentYear; }
-                set
-                {
-                    _establishmentYear = value;
-                }
+                if ((value != 'Y') && (value != 'N'))
+                    throw new ArgumentException("Invalid Value. Please Enter Y/N.");
+                _isSchoolRegistered = value;
+            }
+        }
 
+
+        string _registrationNumber = string.Empty;
+        protected string RegistrationNumber
+        {
+            get { return _registrationNumber; }
+            set { _registrationNumber = value; }
+        }
+
+        char _isSchoolAffiliated;
+        protected char IsSchoolAffiliated
+        {
+            get { return _isSchoolAffiliated; }
+            set
+            {
+                if ((value != 'Y') && (value != 'N'))
+                    throw new ArgumentException("Invalid Value. Please Enter Y/N.");
+                _isSchoolAffiliated = value;
+            }
+        }
+
+        string _affiliationBoard = string.Empty;
+        public String AffiliationBoard
+        {
+            get { return _affiliationBoard; }
+            set { _affiliationBoard = value; }
+        }
+
+        string? _motto;
+        public string Motto
+        {
+            get { return _motto ?? string.Empty; }
+            set { _motto = value; }
+        }
+
+        string? _vision;
+        public string Vision
+        {
+            get { return _vision ?? string.Empty; }
+            set { _vision = value; }
+        }
+
+        string? _description;
+        public string Description
+        {
+            get { return _description ?? string.Empty; }
+            set { _description = value; }
+        }
+
+        string _addressLine1 = string.Empty;
+        public string AddressLine1
+        {
+            get { return _addressLine1; }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("AddressLine1 can not be null.");
+                _addressLine1 = value;
+            }
+        }
+
+        string? _addressLine2;
+        protected string AddressLine2
+        {
+            get { return _addressLine2 ?? string.Empty; }
+            set { _addressLine2 = value; }
+        }
+
+        string _fullAddress = string.Empty;
+        public string FullAddress
+        {
+            get { return _fullAddress; }
+            set { _fullAddress = value; }
+        }
+
+        string _city = string.Empty;
+        public String City
+        {
+            get { return _city; }
+            set { _city = value; }
+        }
+
+        string _schoolState = string.Empty;
+        public string SchoolState
+        {
+            get { return _schoolState; }
+            set { _schoolState = value; }
+        }
+
+        string _country = string.Empty;
+        public string Country
+        {
+            get { return _country; }
+            set { _country = value; }
+        }
+
+        string _zipCode = string.Empty;
+        public String ZipCode
+        {
+            get { return _zipCode; }
+            set { _zipCode = value; }
+        }
+
+        string _emailId = string.Empty;
+        public string EmailId
+        {
+            get { return _emailId; }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("Email can not be null.");
+                _emailId = value;
 
             }
+        }
 
-            char _isSchoolRegistered;
-            protected char IsSchoolRegistered 
+        string _websiteURL = string.Empty;
+        public string WebsiteURL
+        {
+            get { return _websiteURL; }
+            set
             {
-                get { return _isSchoolRegistered; }
-                set
-                {
-                    if ( (value != 'Y') && (value != 'N'))
-                        throw new ArgumentException("Invalid Value. Please Enter Y/N.");
-                    _isSchoolRegistered = value;
-                }
+                if (value == null)
+                    throw new ArgumentNullException("WebsiteURL can not be null.");
+                _websiteURL = value;
             }
+        }
 
-            string _registrationNumber = string.Empty;
-            protected string RegistrationNumber
+        string _schoolPhoneNumber = string.Empty;
+        public string SchoolPhoneNumber
+        {
+            get { return _schoolPhoneNumber; }
+            set { _schoolPhoneNumber = value; }
+        }
+
+
+        /*--------------------------------- Organization details -----------------------------------------------------*/
+
+
+        /*--------------------------------- Organization - Individual relationship details -----------------------------
+
+
+
+        _schoolRelationShipId = > This establishes relationship of an Individual with the Organization.
+        
+                                    Example: EmployeeId for employees like EducatorId or StudentId
+         
+         
+         */
+
+        int _employeeRelationShipId;
+        public int EmployeeRelationShipId
+        {
+            get { return (int)_employeeRelationShipId; }
+            set { _employeeRelationShipId = value; }
+        }
+
+        int _studentRelationShipId;
+        public int StudentRelationShipId
+        {
+            get { return (int)_studentRelationShipId; }
+            set { _studentRelationShipId = value; }
+        }
+
+        int _schoolRelationShipCategoryId;
+        internal int SchoolRelationShipCategoryId
+        {
+            get { return _schoolRelationShipCategoryId; }
+            set
             {
-                get { return _registrationNumber; }
-                set
-                {
-                    _registrationNumber = value;
-                }
-            }
+                if (value < 0)
 
-
-            char _isSchoolAffiliated;
-            protected char IsSchoolAffiliated        
-            {
-                get { return _isSchoolAffiliated; }
-                set
-                {
-                    if ((value != 'Y') && (value != 'N'))
-                        throw new ArgumentException("Invalid Value. Please Enter Y/N.");
-                    _isSchoolAffiliated = value;
-                }
-            }
-
-            string _affiliationBoard = string.Empty;
-            public string AffiliationBoard
-            {
-                get { return _affiliationBoard; }
-                set
-                {
-                    _affiliationBoard = value;
-                }
-            }
-
-            string _schoolPhoneNumber = string.Empty;
-            public string SchoolPhoneNumber
-            {
-
-                get { return _schoolPhoneNumber; }
-                set
-                {
-                    if ((value == null) || (value.ToString().Length < 10))
-                        throw new ArgumentException("Phone Number can not be less than 10 characters or null.");
-                    _schoolPhoneNumber = value;
-                }
-            }
-
-            string _motto = string.Empty;
-            public string Motto
-            {
-                get { return _motto; }
-                set { _motto = value; }
-            }
-
-            string _vision = string.Empty;
-            public string Vision
-            {
-                get { return _vision; }
-                set { _vision = value; }
-            }
-
-            string _description = string.Empty;
-            public string Description
-            {
-                get { return _description; }
-                set { _description = value; }
-            }
-
-            string _addressLine1 = string.Empty;
-            public string AddressLine1
-            {
-                get { return _addressLine1; }
-                set
-                {
-                    if (value == null)
-                        throw new ArgumentNullException("AddressLine1 can not be null.");
-                    _addressLine1 = value;
-                }
-            }
-
-            string _addressLine2 = string.Empty;
-            public string AddressLine2
-            {
-                get { return _addressLine2; }
-                set { _addressLine2 = value; }
-            }
-
-            string _city = string.Empty;
-            public string City
-            {
-                get { return _city; }
-                set
-                {
-                    if (value == null)
-                        throw new ArgumentNullException("City can not be null.");
-                    _city = value;
-                }
-            }
-
-            string _state = string.Empty;
-            public string State
-            {
-                get { return _state; }
-                set
-                {
-                    if (value == null)
-                        throw new ArgumentNullException("State can not be null.");
-                    _state = value;
-                }
-            }
-
-            string _country = string.Empty;
-            public string Country
-            {
-                get { return _country; }
-                set
-                {
-                    if (value == null)
-                        throw new ArgumentNullException("Country can not be null.");
-                    _country = value;
-                }
-            }
-
-            string _zipCode = string.Empty;
-            public string ZipCode
-            {
-                get { return _zipCode; }
-                set { _zipCode = value; }
-            }
-
-            string _emailId = string.Empty;
-            public string EmailId
-            {
-                get { return _emailId; }
-                set
-                {
-                    if (value == null)
-                        throw new ArgumentNullException("Email can not be null.");
-                    _emailId = value;
-
-                }
-            }
-
-            string _websiteURL = string.Empty;
-            public string WebsiteURL
-            {
-                get { return _websiteURL; }
-                set
-                {
-                    if (value == null)
-                        throw new ArgumentNullException("WebsiteURL can not be null.");
-                    _websiteURL = value;
-                }
-            }
-
-            int _schoolRelationShipCategoryId;
-            internal int SchoolRelationShipCategoryId
-            {
-                get { return _schoolRelationShipCategoryId; }
-                set
-                {
-                    if (value < 0)
-
-                        throw new ArgumentException("School Id can not be less than 0.");
+                    throw new ArgumentException("School Id can not be less than 0.");
                 _schoolRelationShipCategoryId = value;
-                }
             }
+        }
 
-            string _schoolRelationShipCategoryName=string.Empty;
-            internal string SchoolRelationShipCategoryName
-            { 
-                get { return _schoolRelationShipCategoryName; }
+        string _schoolRelationShipCategoryName = string.Empty;
+        internal string SchoolRelationShipCategoryName
+        {
+            get { return _schoolRelationShipCategoryName; }
 
-                set { _schoolRelationShipCategoryName = value; }
-        
-        
-            }
+            set { _schoolRelationShipCategoryName = value; }
 
-            int _employeeRelationShipId;
-            public int EmployeeRelationShipId
+
+        }
+
+        int _schoolDepartmentId;        //Department of the Related Individual
+        public int SchoolDepartmentId
+        {
+            get { return (int)_schoolDepartmentId; }
+            set
             {
-                get { return (int)_employeeRelationShipId; }
-                set { _employeeRelationShipId = value; }
+                if (value < 0) throw new ArgumentException("DepartmentId can not be less than 0");
+                _schoolDepartmentId = value;
+
             }
+        }
 
-            int _studentRelationShipId;
-            public int StudentRelationShipId
-            {
-                get { return (int)_studentRelationShipId; }
-                set { _studentRelationShipId = value; }
-            }
+        /*--------------------------------- Organization - Individual relationship details ----------------------------------*/
+
+        public SchoolDetails()
+        {
+            this.SchoolCode = "SKRPAT01";
+            this.SchoolName = "SKR International School";
+            this.EstablishmentYear = DateTime.Parse("2018-03-18");
+            this.IsSchoolRegistered = 'Y';
+            this.RegistrationNumber = "SKRPATCBSE";
+            this.IsSchoolAffiliated = 'Y';
+            this.AffiliationBoard = "CBSE";
+            this.Motto = "Education for everyone";
+            this.Vision = "Education for Bihar";
+            this.Description = "CBSE Affiliated School with AI Labs";
+            this.AddressLine1 = "Saguna More";
+            this.AddressLine2 = "Danapur";
+            this.FullAddress = _addressLine1 + _addressLine2;
+            this.City = "Patna";
+            this.SchoolState = "Bihar";
+            this.Country = "India";
+            this.ZipCode = "800020";
+            this.EmailId = "contact@skrschool.com";
+            this.WebsiteURL = "www.skrschool.com";
+            this.SchoolPhoneNumber = "8123414488";
+
+        }
+        public SchoolDetails(string schCode, string schName, string schRegNum, DateTime estYear, string affBoard, string motto, string vision, 
+                            string schDesc, string addLine1, string addLine2, string city, string state, string country, string zipCode, string emailID, 
+                            string schURL, string schPhoneNum)
+        {
+            this.SchoolCode = schCode;
+            this.SchoolName = schName;
+            this.RegistrationNumber = schRegNum;
+            this.EstablishmentYear = estYear;
+            this.AffiliationBoard = affBoard;
+            this.Motto = motto;
+            this.Vision = vision;
+            this.Description = schDesc;
+            this.AddressLine1 = addLine1;
+            this.AddressLine2 = addLine2;
+            this.City = city;
+            this.SchoolState = state;
+            this.Country = country;
+            this.ZipCode = zipCode;
+            this.EmailId = emailID;
+            this.WebsiteURL = schURL;
+            this.SchoolPhoneNumber = schPhoneNum;
 
 
-            int _schoolDepartmentId;        //Department of the Related Individual
-            public int SchoolDepartmentId
-            {
-                get { return (int)_schoolDepartmentId; }
-                set
-                {
-                    if (value < 0) throw new ArgumentException("DepartmentId can not be less than 0");
-                    _schoolDepartmentId = value;
-
-                }
-            }
-
-
+        }
 
     }
-
-
-
-    
 }

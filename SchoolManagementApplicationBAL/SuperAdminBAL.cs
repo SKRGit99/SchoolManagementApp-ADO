@@ -9,9 +9,29 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationBAL
 {
+    /*
+      SuperAdminRepo : StudentRepo
+
+      StudentRepo : DepartmentRepo
+
+      StudentDetails : DepartmentDetails
+
+      EducatorDetails : EmployeeDetails
+
+      EmployeeDetails : DepartmentDetails
+
+      DepartmentRepo : DepartmentDetails
+
+      DepartmentDetails : OrganizationRepo
+
+      OrganizationRepo : OrganizationDetails
+
+  */
     public class SuperAdminBAL
     {
         ISuperAdmin adminSup = new SuperAdminRepo();
+
+        
         public List<StudentDetails> fetchStudentDetails(int _inputStudentId)
         {
             List<StudentDetails> detStudent = new List<StudentDetails>();

@@ -5,14 +5,27 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 namespace SchoolManagementApplicationDAL.Model
 {
+    /*
+       SuperAdminRepo : StudentRepo
+
+       StudentRepo : DepartmentRepo
+
+
+
+       StudentDetails : DepartmentDetails
+
+       EducatorDetails : EmployeeDetails
+
+       EmployeeDetails : DepartmentDetails
+
+       DepartmentDetails : OrganizationDetails
+
+   */
     public class StudentDetails : DepartmentDetails
     {
-        public StudentDetails() { }
-
+        
         int _studentId;
         public int StudentId
         {
@@ -233,36 +246,61 @@ namespace SchoolManagementApplicationDAL.Model
         }
 
 
-
-        public override List<OrganizationDetails> getOrganizationDetails()
+        public StudentDetails()
         {
-            List<OrganizationDetails> lstOrgDetils = new List<OrganizationDetails>();
-            //Console.WriteLine($"Organization details: School Code : {SchoolCode} School Name : {SchoolName} Registration Number : {RegistrationNumber} Establishment Year : {EstablishmentYear} Affiliation Board : {AffiliationBoard} Motto : {Motto} Vision : {Vision} Description : {Description} AddressLine1 : {AddressLine1} AddressLine2 : {AddressLine2} Full Address : {FullAddress} City : {City} State : {SchoolState} Country : {Country} ZipCode : {ZipCode} EmailId : {EmailId} Website URL : {WebsiteURL} Phone Number : {SchoolPhoneNumber}");
+            this.StudentId = 1;
+            this.StudentFirstName = "Sampat";
+            this.StudentMiddleName = "Kumar";
+            this.StudentLastName = "Rahul";
+            this.StudentName = StudentFirstName + StudentMiddleName + StudentLastName;
+            this.IsRegisteredStudent = 'Y';
+            this.StudentRegistrationId = "1";
+            this.StudentRegistrationDate = DateTime.Parse("01/01/0001 00:00:00");
+            this.RollNumber = 1;
+            this.StudentClass = 1;
+            this.StudentSectionId = 1;
+            this.StudentSectionName = 'A';
+            this.StudentPhoneNumber = "8123414418";
+            this.StudentAddressLine1 = "Saguna More";
+            this.StudentAddressLine2 = "Danapur Patna";
+            this.StudentAddress = StudentAddressLine1 + StudentAddressLine2;
+            this.StudentCity = "Patna";
+            this.StudentState = "Bihar";
+            this.StudentCountry = "India";
+            this.StudentZipCode = "800020";
+            this.StudentEmailId = "sampat@skr91.com";
 
-            
 
-
-            return lstOrgDetils;
         }
 
-       
-        public override void getOrganizationRelationshipDetails(int studentId, string schoolCode)
+        public StudentDetails(int stdId,string stdFName, string stdMName, string stdLName,char isRegStudent,string stdRegId,DateTime stdDateReg, 
+                              int stdRollNum, int stdClass, int stdSecId, char stdSecName, string stdPhoneNum, string stdAddline1, string stdAddLine2, 
+                              string stdCity, string stdState, string stdZipCode, string stdEmailId, int deptId, string deptCode, string deptName, 
+                              string schCode, string schName, string schRegNum, DateTime estYear, string affBoard, string motto, string vision, string schDesc, 
+                              string addLine1, string addLine2, string city, string state, string country, string zipCode, string emailID, string schURL, 
+                              string schPhoneNum) : base(deptId, deptCode, deptName, schCode, schName, schRegNum, estYear, affBoard, motto, vision, schDesc, addLine1, addLine2, city, state, country, zipCode, emailID, schURL, schPhoneNum)
         {
-            Console.WriteLine($"Relationship Id : {StudentRelationShipId} Relationship Category Id: {SchoolRelationShipCategoryId} Relationship Category Name : {SchoolRelationShipCategoryName} Relationship-Department Name :{SchoolDepartmentId} ");
-        }
+            this.StudentId = stdId;
+            this.StudentFirstName = stdFName;
+            this.StudentMiddleName = stdMName;
+            this.StudentLastName = stdLName;
+            this.StudentName = stdFName + stdMName +stdLName;
+            this.IsRegisteredStudent = isRegStudent;
+            this.StudentRegistrationId = stdRegId;
+            this.StudentRegistrationDate = stdDateReg;
+            this.RollNumber = stdRollNum;
+            this.StudentClass = stdClass;
+            this.StudentSectionId = stdSecId;
+            this.StudentSectionName = stdSecName;
+            this.StudentPhoneNumber = stdPhoneNum;
+            this.StudentAddressLine1 = stdAddline1;
+            this.StudentAddressLine2 = stdAddLine2;
+            this.StudentAddress = stdAddLine2 + stdAddLine2;
+            this.StudentCity = stdCity;
+            this.StudentState = stdState;
+            this.StudentZipCode = stdZipCode;
+            this.StudentEmailId = stdEmailId;
 
-        public override void getDepartmentDetails(int deptId)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
-        }
-        public override void getDepartmentDetails(int deptId, string deptName)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
-        }
-
-        public override void getDepartmentDetails(string deptName, int deptId)
-        {
-            Console.WriteLine($"Department Id : {DepartmentId} Department Code : {DepartmentCode} Department Name :{DepartmentName}");
         }
 
 
