@@ -7,9 +7,17 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
-    /* SuperAdminRepo : StudentRepo
+    /*
+       SuperAdminRepo : StudentRepo
 
        StudentRepo : DepartmentRepo
+       
+       DepartmentRepo : OrganizationRepo
+
+       
+       EducatorRepo : EmployeeRepo
+
+       EmployeeRepo : DepartmentRepo
 
 
 
@@ -21,7 +29,7 @@ namespace SchoolManagementApplicationDAL.Model
 
        DepartmentDetails : OrganizationDetails
 
-    */
+   */
     public class SchoolDetails
     {
         string _schoolCode = string.Empty;

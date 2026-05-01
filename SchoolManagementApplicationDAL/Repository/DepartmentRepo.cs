@@ -7,28 +7,6 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Repository
 {
-    /*
-      SuperAdminRepo : StudentRepo
-
-      StudentRepo : DepartmentRepo
-
-      DepartmentRepo : OrganizationRepo
-
-
-      DepartmentDetails : OrganizationRepo
-
-      OrganizationRepo : OrganizationDetails
-
-
-      Model Classes:
-
-      StudentDetails : DepartmentDetails
-
-      EducatorDetails : EmployeeDetails
-
-      EmployeeDetails : DepartmentDetails
-
-  */
     public class DepartmentRepo : OrganizationRepo
     {
         private readonly string _connString = "Server=LAPTOP-K1PVP9J6\\;Database=SchoolManagementAppDevDb;Integrated Security=True;";

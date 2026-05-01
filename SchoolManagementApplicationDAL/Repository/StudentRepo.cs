@@ -13,28 +13,29 @@ using System.Threading.Tasks;
 namespace SchoolManagementApplicationDAL.Repository
 {
     /*
-      SuperAdminRepo : StudentRepo
+       
+       SuperAdminRepo : StudentRepo
 
-      StudentRepo : DepartmentRepo
+       StudentRepo : DepartmentRepo
+       
+       DepartmentRepo : OrganizationRepo
 
-      DepartmentRepo : OrganizationRepo
+       
+       EducatorRepo : EmployeeRepo
 
-
-      DepartmentDetails : OrganizationRepo
-
-      OrganizationRepo : OrganizationDetails
-
-
-      Model Classes:
-
-      StudentDetails : DepartmentDetails
-
-      EducatorDetails : EmployeeDetails
-
-      EmployeeDetails : DepartmentDetails
+       EmployeeRepo : DepartmentRepo
 
 
-     public class StudentRepo : IStudent, DepartmentRepo -- This will throw error.Base Class should come before any Interface.
+
+       StudentDetails : DepartmentDetails
+
+       EducatorDetails : EmployeeDetails
+
+       EmployeeDetails : DepartmentDetails
+
+       DepartmentDetails : OrganizationDetails
+
+       public class StudentRepo : IStudent, DepartmentRepo -- This will throw error.Base Class should come before any Interface.
   */
 
     public class StudentRepo : DepartmentRepo, IStudent

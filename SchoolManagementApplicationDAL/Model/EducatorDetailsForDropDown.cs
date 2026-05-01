@@ -6,6 +6,29 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementApplicationDAL.Model
 {
+    /*
+       SuperAdminRepo : StudentRepo
+
+       StudentRepo : DepartmentRepo
+       
+       DepartmentRepo : OrganizationRepo
+
+       
+       EducatorRepo : EmployeeRepo
+
+       EmployeeRepo : DepartmentRepo
+
+
+
+       StudentDetails : DepartmentDetails
+
+       EducatorDetails : EmployeeDetails
+
+       EmployeeDetails : DepartmentDetails
+
+       DepartmentDetails : OrganizationDetails
+
+   */
     public class EducatorDetailsForDropDown
     {
         public EducatorDetailsForDropDown() { }

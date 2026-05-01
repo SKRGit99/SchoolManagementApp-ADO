@@ -11,6 +11,13 @@ namespace SchoolManagementApplicationDAL.Model
        SuperAdminRepo : StudentRepo
 
        StudentRepo : DepartmentRepo
+       
+       DepartmentRepo : OrganizationRepo
+
+       
+       EducatorRepo : EmployeeRepo
+
+       EmployeeRepo : DepartmentRepo
 
 
 
@@ -271,12 +278,12 @@ namespace SchoolManagementApplicationDAL.Model
         
         }
 
-        public EducatorDetails(int eduId, string eduFName, string eduMName, string eduLName, int eduDeptId,string eduDeptName, string eduClsAssigend, char isEduPermPayroll, int eduPayScale, decimal eduBaseSalary, string eduPhoneNum, string eduAddLine1, string eduAddLine2, string eduCity, 
-                                string eduState, string eduCountry, string eduZipCode, string eduEailId, int employeeId, string employeeFName, string employeeMName, string employeeLName, DateTime dob, string gen, int empdeptId, string empdesignation, DateTime doj, string emptype, int empManagerId, char isPermPayroll,
-                                int empPayScale, decimal empBaseSal, string empQual, int empExpWork, string empPhoneNum, string empAddLine1, string empAddLine2, string empCity, string empState, string empCountry, string empZipCode, string empEmailId, int deptId, string deptCode, string deptName, string schCode, string schName,
-                                string schRegNum, DateTime estYear, string affBoard, string motto, string vision, string schDesc, string addLine1, 
-                                string addLine2, string city, string state, string country, string zipCode, string emailID, 
-                                string schURL, string schPhoneNum) : base (employeeId, employeeFName, employeeMName, employeeLName, dob, gen, empdeptId, empdesignation, doj, emptype, empManagerId, isPermPayroll, empPayScale, empBaseSal, empQual, empExpWork, empPhoneNum, empAddLine1, empAddLine2, empCity, empState, empCountry, empZipCode, empEmailId, deptId, deptCode, deptName, schCode, schName, schRegNum, estYear, affBoard, motto, vision, schDesc, addLine1, addLine2, city, state, country, zipCode, emailID, schURL, schPhoneNum)
+        public EducatorDetails(int eduId, string eduFName, string eduMName, string eduLName, int eduDeptId,string eduDeptName, string eduClsAssigend, char isEduPermPayroll, int eduPayScale, decimal eduBaseSalary, string eduPhoneNum, string eduAddLine1, string eduAddLine2, string eduCity, string eduState, string eduCountry, string eduZipCode, string eduEmailId,
+                               int employeeId, string employeeFName, string employeeMName, string employeeLName, DateTime dob, string gen, int empdeptId, string empdesignation, DateTime doj, string emptype, int empManagerId, char isPermPayroll,int empPayScale, decimal empBaseSal, string empQual, int empExpWork, string empPhoneNum, string empAddLine1, string empAddLine2, string empCity, string empState, string empCountry, string empZipCode, string empEmailId, 
+                               int deptId, string deptCode, string deptName, 
+                               string schCode, string schName, string schRegNum, DateTime estYear, string affBoard, string motto, string vision, string schDesc, string addLine1, 
+                               string addLine2, string city, string state, string country, string zipCode, string emailID, 
+                               string schURL, string schPhoneNum) : base (employeeId, employeeFName, employeeMName, employeeLName, dob, gen, empdeptId, empdesignation, doj, emptype, empManagerId, isPermPayroll, empPayScale, empBaseSal, empQual, empExpWork, empPhoneNum, empAddLine1, empAddLine2, empCity, empState, empCountry, empZipCode, empEmailId, deptId, deptCode, deptName, schCode, schName, schRegNum, estYear, affBoard, motto, vision, schDesc, addLine1, addLine2, city, state, country, zipCode, emailID, schURL, schPhoneNum)
         {
             this.EducatorId = eduId;
             this.EducatorFirstName = eduFName;
@@ -297,11 +304,47 @@ namespace SchoolManagementApplicationDAL.Model
             this.EducatorState = eduState;
             this.EducatorCountry = eduCountry;
             this.EducatorZipCode = eduZipCode;
-            this.EducatorEmailId = eduEailId;
+            this.EducatorEmailId = eduEmailId;
 
         }
 
+        public override OrganizationDetails getOrganizationDetails()
+        {
+            OrganizationDetails lstOrg = new OrganizationDetails();
 
+            return lstOrg;
+
+        }
+
+        /*
+          static void Main(string[] args)
+            {       
+                
+                EducatorDetails details = new EducatorDetails(1,"Santosh","Kumar","Babul",1,"Maths","10,11,12",'Y',9,Convert.ToDecimal(90000.00),"8709620330","Khagaria","Kainjari","Khagaria","Bihar","India","852161","santosh@skr91.com",
+                                                              1, "Anupam","","Kumari", DateTime.Parse("1996-01-10"),"F",2,"Director", DateTime.Parse("2018-04-18"),"Admin",2,'Y',9,100000,"Graduate",10,"8123414499","Khagaria","Bihar","Khagaria","Bihar","India","852161","aupam@skr91.com", 
+                                                              2, "PHY", "Physics",
+                                                              "SKRPAT02", "SKR International School Patna", "SKRPATICSE", DateTime.Parse("2018-04-18"), "CBSE", "Education for All", "Education for India", "ICSE Affiliated School with AI Labs", "Vitthal VR Complex", "Saguna More Danapur", "Patna", "Bihar", "India", "800040", "info@skrschool.com", "www.skrschool.org", "8123414499");
+
+                OrganizationDetails orgDet;        
+                orgDet = new EducatorDetails();  
+                orgDet.getOrganizationDetails();
+                
+
+                orgDet = new EmployeeDetails();
+                orgDet.getOrganizationDetails();
+                
+                
+                orgDet = new DepartmentDetails();
+                orgDet.getOrganizationDetails();
+
+                orgDet = new OrganizationDetails();
+                orgDet.getOrganizationDetails();
+                
+
+                Console.ReadKey();
+            }
+         
+         */
     }
 
 }

@@ -219,7 +219,36 @@ namespace SchoolManagementApplicationDAL.Repository
 
         /*--------------------------------------------- Student Data ---------------------------------------------*/
 
+        
+         /*
+          static void Main(string[] args)
+            {       
+                
+                EducatorDetails details = new EducatorDetails(1,"Santosh","Kumar","Babul",1,"Maths","10,11,12",'Y',9,Convert.ToDecimal(90000.00),"8709620330","Khagaria","Kainjari","Khagaria","Bihar","India","852161","santosh@skr91.com",
+                                                              1, "Anupam","","Kumari", DateTime.Parse("1996-01-10"),"F",2,"Director", DateTime.Parse("2018-04-18"),"Admin",2,'Y',9,100000,"Graduate",10,"8123414499","Khagaria","Bihar","Khagaria","Bihar","India","852161","aupam@skr91.com", 
+                                                              2, "PHY", "Physics",
+                                                              "SKRPAT02", "SKR International School Patna", "SKRPATICSE", DateTime.Parse("2018-04-18"), "CBSE", "Education for All", "Education for India", "ICSE Affiliated School with AI Labs", "Vitthal VR Complex", "Saguna More Danapur", "Patna", "Bihar", "India", "800040", "info@skrschool.com", "www.skrschool.org", "8123414499");
 
+                OrganizationDetails orgDet;        
+                orgDet = new EducatorDetails();  
+                orgDet.getOrganizationDetails();
+                
+
+                orgDet = new EmployeeDetails();
+                orgDet.getOrganizationDetails();
+                
+                
+                orgDet = new DepartmentDetails();
+                orgDet.getOrganizationDetails();
+
+                orgDet = new OrganizationDetails();
+                orgDet.getOrganizationDetails();
+                
+
+                Console.ReadKey();
+            }
+         
+         */
 
     }
 }

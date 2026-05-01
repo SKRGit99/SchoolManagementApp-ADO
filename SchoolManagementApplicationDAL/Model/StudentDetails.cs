@@ -11,6 +11,13 @@ namespace SchoolManagementApplicationDAL.Model
        SuperAdminRepo : StudentRepo
 
        StudentRepo : DepartmentRepo
+       
+       DepartmentRepo : OrganizationRepo
+
+       
+       EducatorRepo : EmployeeRepo
+
+       EmployeeRepo : DepartmentRepo
 
 
 

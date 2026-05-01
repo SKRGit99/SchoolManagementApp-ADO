@@ -18,20 +18,21 @@ namespace SchoolManagementApplicationDAL.Repository
       DepartmentRepo : OrganizationRepo
 
 
-      DepartmentDetails : OrganizationRepo
+      EducatorRepo : EmployeeRepo
 
-      OrganizationRepo : OrganizationDetails
+      EmployeeRepo : DepartmentRepo
 
 
-      Model Classes:
 
       StudentDetails : DepartmentDetails
 
       EducatorDetails : EmployeeDetails
 
       EmployeeDetails : DepartmentDetails
-     
-    */
+
+      DepartmentDetails : OrganizationDetails
+
+ */
     public class SuperAdminRepo : StudentRepo, ISuperAdmin     
     {
         

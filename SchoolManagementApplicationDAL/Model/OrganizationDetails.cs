@@ -11,6 +11,13 @@ namespace SchoolManagementApplicationDAL.Model
        SuperAdminRepo : StudentRepo
 
        StudentRepo : DepartmentRepo
+       
+       DepartmentRepo : OrganizationRepo
+
+       
+       EducatorRepo : EmployeeRepo
+
+       EmployeeRepo : DepartmentRepo
 
 
 
@@ -320,9 +327,15 @@ namespace SchoolManagementApplicationDAL.Model
 
             }
 
-         
-            
 
+
+        public virtual OrganizationDetails getOrganizationDetails()
+        {
+            OrganizationDetails lstOrg = new OrganizationDetails();
+
+            return lstOrg;
+
+        }
 
 
     }
