@@ -1,18 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
+    <title>@ViewData["Title"] - ProdApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <link href="~/StyleSheet1.css" rel="stylesheet" />
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="~/DevApp.styles.css" asp-append-version="true" />
+   
  
     <style>
         html, body {
@@ -165,100 +163,211 @@
                                 Academic Calender
                             </a>
                         </li>
+                        @if ((signInManager.IsSignedIn(User) && User.IsInRole("Admin") || (signInManager.IsSignedIn(User) && User.IsInRole("SuperAdmin"))))
+                            {
+                                <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle"
+                                               role="button"
+                                               data-bs-toggle="dropdown"
+                                               id="myDropdown"
+                                               aria-expanded="false">
+                                                Employee Corner
+                                            </a>
 
+                                            <ul class="dropdown-menu dropdown-menu-dark">
+
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetEducatorDetails">Educator Details</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualEducatorDetailsByRegistrationId">Individual Educator Details</a>
+                                                </li>
+
+
+                                            </ul>
+                                </li>
+
+                                @* <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                id="myDropdown"
+                                                aria-expanded="false">
+                                                Educator Corner
+                                            </a>
+
+                                            <ul class="dropdown-menu dropdown-menu-dark">
+                                
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetEducatorDetails">Educator Details</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualEducatorDetailsByRegistrationId">Individual Educator Details</a>
+                                                </li>
+                                
+
+                                            </ul>
+                                </li> *@
+
+                                <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                id="myDropdown"
+                                                aria-expanded="false">
+                                                Student Corner
+                                            </a>
+
+                                            @*<ul class="dropdown-menu dropdown-menu-dark">
+                                                <li>
+                                                    <a class="dropdown-item" href="/Admin/GetStudentDetails" asp-area="" asp-controller="Admin" asp-action="GetStudentDetails">All Student Details</a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" href="/Admin/GetStudentDetailsByRegistrationId" asp-controller="Admin" asp-action="GetStudentDetailsByRegistrationId">Individual Student Details</a>
+                                                </li>
+                                
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" href="/Admin/GetAllDetails" asp-controller="Admin" asp-action="GGetAllDetails">Consolidated Views</a>
+                                                </li>
+                                            </ul> *@
+                                            <ul class="dropdown-menu dropdown-menu-dark">
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetStudentDetails">All Student Details</a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualStudentDetailsByRegistrationId">Individual Student Details</a>
+                                                </li>
+                                            </ul>
+                                </li>
+
+                                
+                        }
+
+                        else @if (signInManager.IsSignedIn(User) && User.IsInRole("Employee"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Individual Employee corner
+                                </a>
+
+                                <ul class="dropdown-menu">
+
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="StudentDetails"
+                                           asp-action="getStudentDetailsForDropDown">
+                                            My Details
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        }
+                        else @if (signInManager.IsSignedIn(User) && User.IsInRole("Educator"))
+                        {
                         <li class="nav-item dropdown">
-                            
-
                             <a class="nav-link dropdown-toggle"
-                              
+                               href="#"
                                role="button"
                                data-bs-toggle="dropdown"
-                               id="myDropdown"
                                aria-expanded="false">
-                                Student Corner
+                                Individual Educator Corner
                             </a>
 
-                         @*    <ul class="dropdown-menu dropdown-menu-dark">
-                                <li>
-                                    <a class="dropdown-item" href="/Admin/GetStudentDetails" asp-area="" asp-controller="Admin" asp-action="GetStudentDetails">All Student Details</a>
-                                </li>
+                                <ul class="dropdown-menu">
 
-                                <li>
-                                    <a class="dropdown-item" asp-area="" href="/Admin/GetStudentDetailsByRegistrationId" asp-controller="Admin" asp-action="GetStudentDetailsByRegistrationId">Individual Student Details</a>
-                                </li>
-                                
-                                <li>
-                                    <a class="dropdown-item" asp-area="" href="/Admin/GetAllDetails" asp-controller="Admin" asp-action="GGetAllDetails">Consolidated Views</a>
-                                </li>
-                            </ul> *@
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="StudentDetails"
+                                           asp-action="getAllStudentDetails">
+                                            Student Details
+                                        </a>
+                                    </li>
 
-                         
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="StudentDetails"
+                                           asp-action="getStudentDetailsForDropDown">
+                                            My Details
+                                        </a>
+                                    </li>
 
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetStudentDetails">All Student Details</a>
-                                </li>
+                                </ul>
+                            </li>
+                        }
 
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualStudentDetailsByRegistrationId">Individual Student Details</a>
-                                </li>
+                        else @if (signInManager.IsSignedIn(User) && User.IsInRole("Student"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Individual Student Corner
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="StudentDetails"
+                                           asp-action="getAllStudentDetails">
+                                            My Details
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
 
-             
-                            </ul>
-
-
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"
-                               role="button"
-                               data-bs-toggle="dropdown"
-                               id="myDropdown"
-                               aria-expanded="false">
-                                Educator Corner
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                
-                              <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetEducatorDetails">Educator Details</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualEducatorDetailsByRegistrationId">Individual Educator Details</a>
-                                </li>
-                                
-
-                            </ul>
-                        </li>
+                    </ul>
 
 
-                        <li class="nav-item">
-                            <a class="nav-link text-light"
+                    <div class="d-flex align-items-center">
+
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <div class="me-3 text-light">@User?.Identity?.Name </div>
+
+                            <a class="btn me-3 bg-light text-dark"
                                asp-area=""
-                               asp-controller="Home"
-                               asp-action="Index">
-                                Alumni
+                               asp-controller="Login"
+                               asp-action="Logout">
+                                Logout
                             </a>
-                        </li>
-                     
-                      </ul>
+                        }
+                        else
+                        {
+                            <a class="btn me-3 bg-light text-dark"
+                               asp-area=""
+                               asp-controller="Login"
+                               asp-action="displayLoginPage">
+                                Login
+                            </a>
+
+                            <a class="btn me-3 bg-light text-dark"
+                               asp-area=""
+                               asp-controller="Login"
+                               asp-action="displayRegisterPage">
+                                Register
+                            </a>
+
+                        }
+
                     </div>
-                        <a class="btn me-3 bg-light text-dark"
-                           asp-area=""
-                           asp-controller="Student"
-                           asp-action="GetIndividualStudentDetailsByRegistrationId">
-                            Login
-                        </a>
-
-                        <a class="btn me-3 bg-light text-dark"
-                           asp-area=""
-                           asp-controller="Educator"
-                           asp-action="GetEducatorDetails">
-                            Register
-                        </a>
                 </div>
+                        
+            </div>
 
-            </nav>
+        </nav>
     </header>
     <div>
         <main role="main" class="pb-3">
