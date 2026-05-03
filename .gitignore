@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/SchoolManagementApplicationDAL/Migrations/20260503060120_Removed Principal roles. Modified Roles.cs
+/SchoolManagementApplicationDAL/Migrations/20260503062016_Repopulating the Database.cs
+/SchoolManagementApplicationDAL/Migrations/20260503062016_Repopulating the Database.Designer.cs
+/SchoolManagementApplicationDAL/Migrations/20260503060120_Removed Principal roles. Modified Roles.Designer.cs
+/SchoolManagementApplicationDAL/Migrations/20260503062835_Modified Data for Indentity tables v1.0.cs
+/SchoolManagementApplicationDAL/Migrations/20260503062835_Modified Data for Indentity tables v1.0.Designer.cs
