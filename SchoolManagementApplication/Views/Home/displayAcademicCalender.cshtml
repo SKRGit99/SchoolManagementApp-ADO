@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Academic Calendar - SKR International School";
+    Layout = "~/Views/_Layout.cshtml";
+
+    var academicYear = "2026–27";
+}
+
+<!-- Academic Calendar Section -->
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">Academic Calendar</h2>
+        <p class="lead text-dark">
+            Academic Year: <strong>@academicYear</strong>
+        </p>
+        <p class="text-muted">
+            Stay updated with exam schedules, results, and important academic events for Classes I to XII.
+        </p>
+    </div>
+
+    <!-- Calendar Highlights -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h5 class="fw-bold text-primary">Exams</h5>
+                    <p class="text-dark">View detailed exam timetables for all classes from Class 1 to Class 12.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h5 class="fw-bold text-primary">Results</h5>
+                    <p class="text-dark">Check results and performance reports for each class.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h5 class="fw-bold text-primary">Events</h5>
+                    <p class="text-dark">Stay informed about academic events, holidays, and school activities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigate Button -->
+    <div class="text-center">
+        <a href="/AcademicCalendar/Details" class="btn btn-lg btn-success fw-bold shadow-sm">
+            View Full Calendar
+        </a>
+    </div>
+</div>
+

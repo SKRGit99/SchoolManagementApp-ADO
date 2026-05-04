@@ -25,6 +25,35 @@ namespace SchoolManagementApplication.Controllers
             return View();
         }
 
+        public IActionResult displayPrincipalMessage()
+        {
+            return View();
+        }
+
+        public IActionResult displayHistoryPage()
+        {
+            return View();
+        }
+
+        public IActionResult displayManagingCommittee()
+        {
+            return View();
+        }
+
+        public IActionResult displayAdmissionProcess()
+        {
+            return View();
+        }
+
+        public IActionResult displayAcademicCalender()
+        {
+            return View();
+        }
+
+        public IActionResult displayFeeStructure()
+        {
+            return View();
+        }
         public IActionResult displayGallery()
         {
             return View();

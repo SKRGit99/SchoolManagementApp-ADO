@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Application</title>
+    <title>@ViewData["Title"] - SKR International School</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DevApp.styles.css" asp-append-version="true" />
@@ -17,7 +17,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            padding-top:20px;
+            padding-top:30px;
         }
 
         main {
@@ -83,8 +83,8 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="SuperAdmin"
-                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                       asp-controller="Home"
+                                       asp-action="displayPrincipalMessage">
                                         Principal's Message
                                     </a>
                                 </li>
@@ -92,8 +92,8 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="SuperAdmin"
-                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                       asp-controller="Home"
+                                       asp-action="displayHistoryPage">
                                         History
                                     </a>
                                 </li>
@@ -101,8 +101,8 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="SuperAdmin"
-                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                       asp-controller="Home"
+                                       asp-action="displayManagingCommittee">
                                         Managing Committee
                                     </a>
                                 </li>
@@ -110,30 +110,13 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
-                                       asp-controller="SuperAdmin"
-                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
+                                       asp-controller="Home"
+                                       asp-action="displayFeeStructure">
                                         Fee Structure
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a class="dropdown-item"
-                                       asp-area=""
-                                       asp-controller="SuperAdmin"
-                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
-                                        Infrastructure
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item"
-                                       asp-area=""
-                                       asp-controller="SuperAdmin"
-                                       asp-action="GetIndividualStudentDetailsByRegistrationId">
-                                        Aims and Objectives
-                                    </a>
-                                </li>
-
+                                
                                 <li>
                                     <a class="dropdown-item"
                                        asp-area=""
@@ -150,7 +133,7 @@
                             <a class="nav-link text-light"
                                asp-area=""
                                asp-controller="Home"
-                               asp-action="Index">
+                               asp-action="displayAdmissionProcess">
                                 Admission Process
                             </a>
                         </li>
@@ -159,7 +142,7 @@
                             <a class="nav-link text-light"
                                asp-area=""
                                asp-controller="Home"
-                               asp-action="Index">
+                               asp-action="displayAcademicCalender">
                                 Academic Calender
                             </a>
                         </li>
@@ -173,52 +156,6 @@
                             </a>
                         </li>
 
-                       @*  <li class="nav-item dropdown">
-
-
-                            <a class="nav-link dropdown-toggle"
-                               role="button"
-                               data-bs-toggle="dropdown"
-                               id="myDropdown"
-                               aria-expanded="false">
-                                Student Corner
-                            </a>
-
-
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetStudentDetails">All Student Details</a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualStudentDetailsByRegistrationId">Individual Student Details</a>
-                                </li>
-
-
-                            </ul>
-
-
-                        </li> *@
-
-                       @*  <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle"
-                               role="button"
-                               data-bs-toggle="dropdown"
-                               id="myDropdown"
-                               aria-expanded="false">
-                                Educator Corner
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-dark">
-
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetEducatorDetails">Educator Details</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="SuperAdmin" asp-action="GetIndividualEducatorDetailsByRegistrationId">Individual Educator Details</a>
-                                </li>
-                            </ul> 
-                        </li> *@
                             @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                             {
                             <li class="nav-item dropdown">
@@ -268,6 +205,15 @@
                                         </a>
                                     </li>
 
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="Finance"
+                                           asp-action="displayFinanceSection">
+                                            Finance Section
+                                        </a>
+                                    </li>
+
                                 </ul>
                             </li>
                         }
@@ -290,28 +236,6 @@
                                            asp-area=""
                                            asp-controller="SuperAdmin"
                                            asp-action="GetStudentDetails">
-                                            My Details
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle"
-                                   href="#"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Student corner
-                                </a>
-
-                                <ul class="dropdown-menu">
-
-                                    <li>
-                                        <a class="dropdown-item"
-                                           asp-area=""
-                                           asp-controller="SuperAdmin"
-                                           asp-action="GetStudentDetails">
                                             Student Details
                                         </a>
                                     </li>
@@ -322,6 +246,15 @@
                                            asp-controller="SuperAdmin"
                                            asp-action="GetIndividualStudentDetailsByRegistrationId">
                                             Individual Student Details
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="SuperAdmin"
+                                           asp-action="GetIndividualEducatorDetailsByRegistrationId">
+                                            My Details
                                         </a>
                                     </li>
 
@@ -341,14 +274,7 @@
                                     Student Corner
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item"
-                                           asp-area=""
-                                           asp-controller="SuperAdmin"
-                                           asp-action="GetStudentDetails">
-                                            My Details
-                                        </a>
-                                    </li>
+                                    
                                     <li>
                                         <a class="dropdown-item"
                                            asp-area=""
@@ -408,60 +334,59 @@
     </div>
 
 
-    <div class="container py-5">
+    <div class="container py-4">
         <div class="row">
 
             <!-- School Intro -->
             <div class="col-md-3 mb-4">
-                <h4 class="fw-bold text-primary">SKR International School</h4>
-                <p class="small text-primary text-dark">
+                <h6 class="fw-bold text-primary">SKR International School</h6>
+                <p class="text-muted small">
                     Inspiring Excellence. Building Future Leaders since 1995.
                     Providing world-class CBSE education with a focus on holistic student development.
                 </p>
                 <!-- Social Icons -->
                 <div class="d-flex gap-3 text-dark">
-                    <a href="#" class="text-primary"><i class="bi bi-facebook fs-4"></i></a>
-                    <a href="#" class="text-primary"><i class="bi bi-instagram fs-4"></i></a>
-                    <a href="#" class="text-primary"><i class="bi bi-youtube fs-4"></i></a>
+                    <a href="#" class="text-primary"><i class="bi bi-facebook fs-5"></i></a>
+                    <a href="#" class="text-primary"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="#" class="text-primary"><i class="bi bi-youtube fs-5"></i></a>
                 </div>
             </div>
 
             <!-- Quick Links -->
             <div class="col-md-3 mb-4 text-dark">
-                <h5 class="fw-bold text-primary">Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a asp-controller="Home" asp-action="Index" class="text-primary text-dark">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="displayAboutUs" class="text-primary text-dark">About Us</a></li>
-                    <li><a asp-controller="Home" asp-action="displayGallery" class="text-primary text-dark">Gallery</a></li>
-                    <li><a asp-controller="Home" asp-action="Index" class="text-primary text-dark">Academics</a></li>
-                    <li><a asp-controller="Admissions" asp-action="Index" class="text-primary text-dark">Admissions</a></li>
-                    <li><a asp-controller="Facilities" asp-action="Index" class="text-primary text-dark">Facilities</a></li>
-                    <li><a asp-controller="Home" asp-action="Calendar" class="text-primary text-dark">Calendar</a></li>
+                <h6 class="fw-bold text-primary">Quick Links</h6>
+                <ul class="list-unstyled small">
+                    <li><a asp-controller="Home" asp-action="Index" class="text-primary">Home</a></li>
+                    <li><a asp-controller="Home" asp-action="displayAboutUs" class="text-primary">About Us</a></li>
+                    <li><a asp-controller="Home" asp-action="displayAcademicCalender" class="text-primary">Academics</a></li>
+                    <li><a asp-controller="Home" asp-action="displayAdmissionProcess" class="text-primary">Admissions</a></li>
+                    <li><a asp-controller="Home" asp-action="displayFeeStructure" class="text-primary">Fee Structure</a></li>
+                    <li><a asp-controller="Home" asp-action="displayGallery" class="text-primary">Gallery</a></li>
                 </ul>
             </div>
 
             <!-- Contact Us -->
             <div class="col-md-3 mb-4">
-                <h5 class="fw-bold text-primary">Contact Us</h5>
-                <p class="small text-primary text-dark mb-1">📍 SKR Campus, Patna, Patna – 411042</p>
-                <p class="small text-primary text-dark mb-1">📞 020 – 12345678, 020 – 87654321</p>
-                <p class="small text-primary text-dark mb-1">✉️ info@skrschool.com</p>
-                <p class="small text-primary text-dark">🕒 Mon–Sat: 8:00 AM – 4:00 PM</p>
+                <h6 class="fw-bold text-primary">Contact Us</h6>
+                <p class="small text-dark mb-1">📍 SKR Campus, Patna, Patna – 411042</p>
+                <p class="small text-dark mb-1">📞 020 – 12345678, 020 – 87654321</p>
+                <p class="small text-dark mb-1">✉️ info@skrschool.com</p>
+                <p class="small text-dark">🕒 Mon–Sat: 8:00 AM – 4:00 PM</p>
             </div>
 
             <!-- Newsletter -->
             <div class="col-md-3 mb-4">
-                <h5 class="fw-bold text-primary">Newsletter</h5>
-                <p class="small text-primary text-dark">Stay updated with school news and events. Subscribe to our newsletter.</p>
+                <h6 class="fw-bold text-primary">Newsletter</h6>
+                <p class="small text-dark">Stay updated with school news and events. Subscribe to our newsletter.</p>
                 <form class="d-flex">
-                    <input type="email" class="form-control me-2" placeholder="Enter email" />
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                    <input type="email" class="form-control form-control-sm me-2" placeholder="Enter email" />
+                    <button type="submit" class="btn btn-sm btn-primary">Subscribe</button>
                 </form>
 
                 <!-- School App -->
                 <div class="mt-3">
-                    <h6 class="fw-bold text-primary text-dark">Download Our School App</h6>
-                    <p class="small text-primary text-dark">Stay connected — attendance, notices & results on the go.</p>
+                    <h6 class="fw-bold text-primary">Download Our School App</h6>
+                    <p class="small text-dark">Stay connected — attendance, notices & results on the go.</p>
                     <a href="#" class="btn btn-outline-primary btn-sm">
                         <i class="bi bi-google-play"></i> Get it on Google Play
                     </a>

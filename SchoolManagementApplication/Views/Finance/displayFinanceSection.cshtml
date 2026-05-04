@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Finance - SKR International School";
+    Layout = "~/Views/_Layout.cshtml";
+
+    var educationDepartments = new List<dynamic>
+    {
+        new { Name = "Mathematics Department", Salary = "₹12,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹3,00,000"},{"2025","₹3,50,000"},{"2026","₹3,80,000"}} },
+        new { Name = "Science Department", Salary = "₹15,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹4,00,000"},{"2025","₹4,20,000"},{"2026","₹4,50,000"}} },
+        new { Name = "Social Science Department", Salary = "₹10,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹2,50,000"},{"2025","₹2,70,000"},{"2026","₹3,00,000"}} },
+        new { Name = "Computer and AI Division", Salary = "₹18,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹5,00,000"},{"2025","₹5,50,000"},{"2026","₹6,00,000"}} },
+        new { Name = "Hindi Department", Salary = "₹8,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹2,00,000"},{"2025","₹2,20,000"},{"2026","₹2,40,000"}} },
+        new { Name = "English Department", Salary = "₹9,50,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹2,20,000"},{"2025","₹2,40,000"},{"2026","₹2,60,000"}} },
+        new { Name = "Sports & Extra Curricular", Salary = "₹7,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹3,00,000"},{"2025","₹3,20,000"},{"2026","₹3,50,000"}} },
+        new { Name = "Physics Department", Salary = "₹11,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹3,00,000"},{"2025","₹3,20,000"},{"2026","₹3,40,000"}} },
+        new { Name = "Chemistry Department", Salary = "₹11,50,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹3,20,000"},{"2025","₹3,40,000"},{"2026","₹3,60,000"}} },
+        new { Name = "Biology Department", Salary = "₹10,50,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹2,80,000"},{"2025","₹3,00,000"},{"2026","₹3,20,000"}} }
+    };
+
+    var adminDepartments = new List<dynamic>
+    {
+        new { Name = "General Administration", Salary = "₹20,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹6,00,000"},{"2025","₹6,50,000"},{"2026","₹7,00,000"}} },
+        new { Name = "Transport Section", Salary = "₹5,00,000 per year", Expenses = new Dictionary<string,string>{{"2024","₹4,00,000"},{"2025","₹4,50,000"},{"2026","₹5,00,000"}} }
+    };
+}
+
+<!-- Finance Section -->
+<div class="container py-4">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">Finance Overview</h2>
+        <p class="text-dark">
+            Department-wise salary and consolidated year-wise expense details for SKR International School.
+        </p>
+    </div>
+
+    <!-- Education Departments -->
+    <h3 class="fw-bold text-secondary mb-4">Education Departments</h3>
+    <div class="row g-4 mb-5">
+        @foreach (var dept in educationDepartments)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-primary">@dept.Name</h5>
+                        <p class="text-dark mb-2"><strong>Salaries:</strong> @dept.Salary</p>
+                        <p class="fw-bold text-secondary">Consolidated Expenses (Year-wise):</p>
+                        <ul class="list-unstyled text-dark">
+                            @foreach (var exp in dept.Expenses)
+                            {
+                                <li><strong>@exp.Key:</strong> @exp.Value</li>
+                            }
+                        </ul>
+                        <a href="/Finance/Details?dept=@dept.Name" class="btn btn-sm btn-outline-primary fw-bold mt-2">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Administration & Transport -->
+    <h3 class="fw-bold text-secondary mb-4">General Administration & Transport</h3>
+    <div class="row g-4">
+        @foreach (var dept in adminDepartments)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="fw-bold text-primary">@dept.Name</h5>
+                        <p class="text-dark mb-2"><strong>Salaries:</strong> @dept.Salary</p>
+                        <p class="fw-bold text-secondary">Consolidated Expenses (Year-wise):</p>
+                        <ul class="list-unstyled text-dark">
+                            @foreach (var exp in dept.Expenses)
+                            {
+                                <li><strong>@exp.Key:</strong> @exp.Value</li>
+                            }
+                        </ul>
+                        <a href="/Finance/Details?dept=@dept.Name" class="btn btn-sm btn-outline-primary fw-bold mt-2">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

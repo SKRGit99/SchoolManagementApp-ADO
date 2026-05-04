@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Fee Structure - SKR International School";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<!-- Fee Structure Section -->
+<div class="container py-4">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">Fee Structure</h2>
+        <p class="text-dark">
+            Detailed fee information for Classes I to XII. Each section highlights tuition, admission, and other applicable charges.
+        </p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Loop through Classes 1 to 12 -->
+        @for (int i = 1; i <= 12; i++)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h6 class="card-title fw-bold text-primary">Class @i</h6>
+                        <p class="card-text text-dark">
+                            <strong>Tuition Fee:</strong> ₹@(i * 10000) per year <br />
+                            <strong>Admission Fee:</strong> ₹5000 (one-time) <br />
+                            <strong>Library & Lab Fee:</strong> ₹2000 per year <br />
+                            <strong>Transport Fee:</strong> Optional, based on route <br />
+                        </p>
+                        <p class="small text-muted">
+                            Note: Fees are subject to revision as per school policy. 
+                            Scholarships and concessions may be available for meritorious students.
+                        </p>
+                        <!-- View More Button -->
+                        <a href="/FeeStructure/Details?class=@i" 
+                           class="btn btn-sm btn-outline-primary fw-bold mt-2">
+                            View More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

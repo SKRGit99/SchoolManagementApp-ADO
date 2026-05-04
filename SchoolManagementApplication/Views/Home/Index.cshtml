@@ -1,14 +1,14 @@
 ﻿@{
-    ViewData["Title"] = "SKR International School - ProdApp";
+    ViewData["Title"] = "Home";
     Layout = "~/Views/_Layout.cshtml";
 }
 
 <!-- Hero Section -->
- <div class="container py-5">
-    <div class="row align-items-center g-5">
+ <div class="container py-4">
+    <div class="row align-items-center g-4">
         <!-- Text Section -->
         <div class="col-12 col-lg-6 text-center text-lg-start">
-            <h1 class="fw-bold text-primary mb-3" style="font-size:2.2rem;">
+            <h1 class="fw-bold text-primary mb-3" style="font-size:2rem;">
                 Welcome to SKR International School
             </h1>
             <p class="text-dark">
@@ -41,9 +41,9 @@
 </div>
  
 
-<div class="container py-5">
+<div class="container py-4">
     <div class="row justify-content-center">
-        <h2 class="fw-bold text-primary mb-4 text-center" style="margin-top:-50px;">School Highlights</h2>
+        <h2 class="fw-bold text-primary mb-4 text-center">School Highlights</h2>
         <!-- Image Carousel Section -->
         <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" style="max-width:1300px;">
             <!-- Indicators -->
@@ -88,7 +88,7 @@
 </div>
 
 
-<div class="container py-5">
+<div class="container py-4">
     <div class="row align-items-center g-5">
         <!-- Director Image -->
         <div class="col-12 col-md-5 text-center">
@@ -123,7 +123,7 @@
 
 
 
-<div class="container py-5">
+<div class="container py-4">
     <h2 class="fw-bold text-primary mb-4 text-center">School Portal</h2>
     <p class="text-muted">
         Use the tabs above to explore different sections of our school.
@@ -149,14 +149,12 @@
             <button class="nav-link w-100" id="educator-tab" data-bs-toggle="tab" data-bs-target="#educator" type="button" role="tab">Educators</button>
         </li>
         <li class="nav-item flex-fill text-center" role="presentation">
-            <button class="nav-link w-100" id="exam-tab" data-bs-toggle="tab" data-bs-target="#exam" type="button" role="tab">Exams</button>
+            <button class="nav-link w-100" id="exam-tab" data-bs-toggle="tab" data-bs-target="#exam" type="button" role="tab">Academic Calender</button>
         </li>
         <li class="nav-item flex-fill text-center" role="presentation">
             <button class="nav-link w-100" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance" type="button" role="tab">Finance</button>
         </li>
-        <li class="nav-item flex-fill text-center" role="presentation">
-            <button class="nav-link w-100" id="achievements-tab" data-bs-toggle="tab" data-bs-target="#achievements" type="button" role="tab">Achievements</button>
-        </li>
+        
     </ul>
 
     <!-- Tab Content -->
@@ -166,7 +164,7 @@
             <h3 class="fw-bold text-secondary mb-3">Admissions</h3>
             <p class="text-muted">Manage new student admissions and enrollment processes here.</p>
             <div class="mt-4">
-                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                <a href="@Url.Action("displayAdmissionProcess", "Home")" class="btn btn-primary px-4 py-2">
                     Go to Admission Section
                 </a>
             </div>
@@ -178,7 +176,7 @@
             <p class="text-muted">View and manage student details, classes, and performance records.</p>
             
             <div class="mt-4">
-                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                <a href="@Url.Action("GetStudentDetails", "SuperAdmin")" class="btn btn-primary px-4 py-2">
                     Go to Students Section
                 </a>
             </div>
@@ -190,7 +188,7 @@
             <p class="text-muted">Access educator profiles, departments, and assigned classes.</p>
             
             <div class="mt-4">
-                <a href="@Url.Action("GetEducatorDetails", "Educator")" class="btn btn-primary px-4 py-2">
+                <a href="@Url.Action("GetEducatorDetails", "SuperAdmin")" class="btn btn-primary px-4 py-2">
                     Go to Educators Section
                 </a>
 
@@ -199,11 +197,11 @@
 
         <!-- Exams -->
         <div class="tab-pane fade" id="exam" role="tabpanel">
-            <h3 class="fw-bold text-secondary mb-3">Exams</h3>
+            <h3 class="fw-bold text-secondary mb-3">Academic Calender</h3>
             <p class="text-muted">Schedule, manage, and review exam results for all classes.</p>
             <div class="mt-4">
-                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
-                    Go to Exams Section
+                <a href="@Url.Action("displayAcademicCalender", "Home")" class="btn btn-primary px-4 py-2">
+                    Go to Academic Calender Section
                 </a>
 
             </div>
@@ -214,26 +212,17 @@
             <h3 class="fw-bold text-secondary mb-3">Finance</h3>
             <p class="text-muted">Track school fees, expenses, and financial reports.</p>
             <div class="mt-4">
-                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
+                <a href="@Url.Action("displayFinanceSection", "Finance")" class="btn btn-primary px-4 py-2">
                     Go to Finance Section
                 </a>
             </div>
         </div>
 
-        <!-- Achievements -->
-        <div class="tab-pane fade" id="achievements" role="tabpanel">
-            <h3 class="fw-bold text-secondary mb-3">Achievements</h3>
-            <p class="text-muted">Celebrate student and school achievements, awards, and recognitions.</p>
-            <div class="mt-4">
-                <a href="@Url.Action("GetStudentDetails", "Student")" class="btn btn-primary px-4 py-2">
-                    Go to Achievements Section
-                </a>
-            </div>
-         </div>
+       
     </div>
 </div>
 
-<div class="container py-5">
+<div class="container py-4">
     <h2 class="fw-bold text-primary mb-4 text-center">Our Facilities</h2>
     <div class="row g-4">
         <!-- Tech Savvy Classes -->
@@ -287,7 +276,7 @@
 </div>
 
 <!-- Vision Section -->
-<div class="container py-5">
+<div class="container py-4">
     <div class="row align-items-center g-5">
         <!-- Text -->
         <div class="col-12 col-lg-6">
@@ -312,7 +301,7 @@
 </div>
 
 <!-- Explore More Section -->
-<div class="container py-5">
+<div class="container py-4">
     <div class="row justify-content-center text-center">
         <div class="col-12 col-md-10">
             <h3 class="fw-bold text-primary mb-3">Explore More</h3>

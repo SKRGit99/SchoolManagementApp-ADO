@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Admissions - SKR International School";
+    Layout = "~/Views/_Layout.cshtml";
+
+    var academicYear = "2026–27";
+    var seatsAvailable = new Dictionary<string, int>
+    {
+        { "Class 1", 25 },
+        { "Class 2", 20 },
+        { "Class 3", 18 },
+        { "Class 4", 22 },
+        { "Class 5", 20 },
+        { "Class 6", 15 },
+        { "Class 7", 18 },
+        { "Class 8", 20 },
+        { "Class 9", 16 },
+        { "Class 10", 14 },
+        { "Class 11", 12 },
+        { "Class 12", 10 }
+    };
+}
+
+<div class="container py-5">
+    <!-- Academic Year -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">Admissions Open</h2>
+        <p class="lead text-dark">Academic Year: <strong>@academicYear</strong></p>
+    </div>
+
+    <!-- Seats Availability with Apply Button -->
+    <div class="row g-4 mb-5">
+        @foreach (var seat in seatsAvailable)
+        {
+            <div class="col-6 col-md-3">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <h6 class="fw-bold text-primary">@seat.Key</h6>
+                        <p class="text-dark mb-2">Seats Available: <strong>@seat.Value</strong></p>
+                        <a href="/Admissions/Apply?class=@seat.Key"
+                           class="btn btn-sm btn-success fw-bold shadow-sm">
+                            Apply Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Admissions Steps -->
+    <div class="text-center mb-4">
+        <h3 class="fw-bold text-primary">Admissions Process</h3>
+        <p class="text-dark">Follow these steps to complete the admission process smoothly.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-12">
+            <button class="btn btn-outline-primary w-100 text-start fw-bold mb-2">Step 1 - Fill Application Form</button>
+            <p class="text-dark">Complete the admission form online or collect it from the school office. Ensure all student details are filled accurately.</p>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-outline-primary w-100 text-start fw-bold mb-2">Step 2 - Submit Documents</button>
+            <p class="text-dark">Submit required documents including birth certificate, previous school records, transfer certificate, and photographs.</p>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-outline-primary w-100 text-start fw-bold mb-2">Step 3 - Pay Registration Fee</button>
+            <p class="text-dark">Pay the non-refundable registration fee at the office or through the online portal to confirm your application.</p>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-outline-primary w-100 text-start fw-bold mb-2">Step 4 - Entrance Assessment</button>
+            <p class="text-dark">Students may be required to appear for an entrance test or interview to evaluate academic readiness and overall suitability.</p>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-outline-primary w-100 text-start fw-bold mb-2">Step 5 - Admission Confirmation</button>
+            <p class="text-dark">Upon successful evaluation, parents will receive an admission confirmation letter. Complete the fee payment to secure the seat.</p>
+        </div>
+    </div>
+</div>
