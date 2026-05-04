@@ -30,5 +30,10 @@ namespace SchoolManagementApplication.Controllers
             return View();
         }
 
+        public IActionResult displayContactUsPage()
+        {
+            return View();
+        }
+
     }
 }
