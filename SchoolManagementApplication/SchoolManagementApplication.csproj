@@ -22,8 +22,4 @@
     <PackageReference Include="System.Web.Mvc.Extensions" Version="1.1.1.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Employee\" />
-  </ItemGroup>
-
 </Project>
