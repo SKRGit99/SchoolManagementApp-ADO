@@ -17,41 +17,125 @@
         </p>
     </div>
 
-    <!-- Calendar Highlights -->
-    <div class="row g-4 mb-4">
-        <div class="col-md-4">
-            <div class="card shadow-sm h-100 text-center">
-                <div class="card-body">
-                    <h5 class="fw-bold text-primary">Exams</h5>
-                    <p class="text-dark">View detailed exam timetables for all classes from Class 1 to Class 12.</p>
+    <!-- Exam Section -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h4 class="fw-bold text-primary mb-3">Exams</h4>
+            <form class="row g-3">
+                <!-- Exam Type Dropdown -->
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Exam Type</label>
+                    <select class="form-select" id="examType">
+                        <option selected disabled>Select Exam Type</option>
+                        <option>Quarterly</option>
+                        <option>Semi Annual</option>
+                        <option>Annual</option>
+                    </select>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm h-100 text-center">
-                <div class="card-body">
-                    <h5 class="fw-bold text-primary">Results</h5>
-                    <p class="text-dark">Check results and performance reports for each class.</p>
+                <!-- Class Dropdown -->
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Class</label>
+                    <select class="form-select" id="examClass">
+                        <option selected disabled>Select Class</option>
+                        @for (int i = 1; i <= 12; i++)
+                        {
+                            <option>Class @i</option>
+                        }
+                    </select>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card shadow-sm h-100 text-center">
-                <div class="card-body">
-                    <h5 class="fw-bold text-primary">Events</h5>
-                    <p class="text-dark">Stay informed about academic events, holidays, and school activities.</p>
+                <!-- Section Dropdown -->
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Section</label>
+                    <select class="form-select" id="examSection">
+                        <option selected disabled>Select Section</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                    </select>
                 </div>
-            </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 text-center mt-3">
+                    <button type="submit" class="btn btn-success fw-bold">Submit Exam Selection</button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- Navigate Button -->
-    <div class="text-center">
-        <a href="/AcademicCalendar/Details" class="btn btn-lg btn-success fw-bold shadow-sm">
-            View Full Calendar
-        </a>
+    <!-- Results Section -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h4 class="fw-bold text-primary mb-3">Results</h4>
+            <form class="row g-3">
+                <!-- Result Type Dropdown -->
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Result Type</label>
+                    <select class="form-select" id="resultType">
+                        <option selected disabled>Select Result Type</option>
+                        <option>Quarterly</option>
+                        <option>Semi Annual</option>
+                        <option>Annual</option>
+                    </select>
+                </div>
+
+                <!-- Class Dropdown -->
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Class</label>
+                    <select class="form-select" id="resultClass">
+                        <option selected disabled>Select Class</option>
+                        @for (int i = 1; i <= 12; i++)
+                        {
+                            <option>Class @i</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- Section Dropdown -->
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Section</label>
+                    <select class="form-select" id="resultSection">
+                        <option selected disabled>Select Section</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 text-center mt-3">
+                    <button type="submit" class="btn btn-success fw-bold">Submit Result Selection</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notice Board Section -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="fw-bold text-primary mb-3">Notice Board</h4>
+            <div class="notice-board" style="height:200px; overflow:hidden; position:relative;">
+                <ul class="list-unstyled mb-0" id="noticeList" style="position:absolute; animation: scrollUp 10s linear infinite;">
+                    <li><a href="#" class="text-dark">Annual Sports Day - May 15</a></li>
+                    <li><a href="#" class="text-dark">Parent Teacher Meeting - May 20</a></li>
+                    <li><a href="#" class="text-dark">Summer Vacation Begins - June 1</a></li>
+                    <li><a href="#" class="text-dark">Science Exhibition - July 10</a></li>
+                    <li><a href="#" class="text-dark">Independence Day Celebration - Aug 15</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
+<!-- CSS for Notice Board Scrolling -->
+@* <style>
+    @keyframes scrollUp {
+        0% { top: 100%; }
+        100% { top: -100%; }
+    }
+</style> *@
